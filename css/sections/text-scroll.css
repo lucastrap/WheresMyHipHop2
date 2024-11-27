@@ -1,0 +1,36 @@
+/******************LINE WITH TEXT***************/
+.text_scrolling_section {
+    margin-top: 20px;
+    width: 100%; 
+    font-weight: 800;
+    font-size: 40px;
+    text-transform: uppercase;
+    overflow: hidden;
+}
+
+.text_scrolling_container {
+    display: flex;
+    width: fit-content;
+    flex: auto;
+    flex-direction: row;
+}
+
+.text_scrolling_part {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    padding: 0 4px;
+    color: var(--secondary-color);
+}
+
+.text_scrolling_image {
+    width: 50px;
+    height: 50px;
+    margin: 0 1rem 0 0;
+    transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.text_scrolling_image img {
+  max-width: 100%;
+  max-height: 100%;
+}
