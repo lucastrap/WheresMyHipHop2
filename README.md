@@ -1,5 +1,5 @@
 # Where Is My HipHop 2 (WIM2H)
-coucou
+
 Bienvenue dans le dépôt officiel de **Where Is My HipHop 2** (WIM2H), un événement dédié à la culture HipHop, organisé par l'association **Sound Workerz**.  
 
 ## 🌟 À propos
@@ -12,9 +12,3 @@ WIM2H célèbre le HipHop dans toute sa diversité à travers des stages (Danse,
 - **Instagram** : [@soundworkerz](#)  
 
 Rejoignez-nous pour découvrir et partager cette culture universelle !
-ffrrffr
-
-
-
-
-aze
