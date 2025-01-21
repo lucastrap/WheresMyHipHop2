@@ -98,7 +98,7 @@ const Header = () => {
     const navigationLinks = [
         { to: '/#intro', label: 'Événements' },
         { to: '/#program', label: 'Programme' },
-        { to: '/#association', label: "L'Association" },
+        { to: '/#about', label: "À propos" },
         { to: '/#histoire', label: 'Notre Histoire' },
         { to: '/gallery', label: 'Galerie' },
     ];
@@ -124,7 +124,8 @@ const Header = () => {
             transition-all duration-500
             transform
             ${isVisible ? 'translate-y-0' : '-translate-y-full'}
-            py-6
+            py-2
+            ${lastScrollY > 50 ? 'backdrop-blur-sm bg-black/10' : ''}
         `}>
             <nav className="container mx-auto relative">
                 {/* Desktop Layout */}
@@ -139,16 +140,20 @@ const Header = () => {
                         </Link>
                     </div>
 
-                    {/* Navigation Links in Modern Button Style - Centered */}
-                    <div className="flex items-center justify-center gap-4">
-                        {navigationLinks.map((link) => (
-                            <NavLink key={link.to} to={link.to}>
-                                {link.label}
+                    {/* Navigation Links in Modern Button Style */}
+                    <div className="flex items-center justify-between px-6">
+                        <div className="flex items-center gap-4 ml-64">
+                            {navigationLinks.map((link) => (
+                                <NavLink key={link.to} to={link.to}>
+                                    {link.label}
+                                </NavLink>
+                            ))}
+                        </div>
+                        <div className="ml-4">
+                            <NavLink to="/#packs" isCTA={true}>
+                                Je participe !
                             </NavLink>
-                        ))}
-                        <NavLink to="/#packs" isCTA={true}>
-                            Je participe !
-                        </NavLink>
+                        </div>
                     </div>
                 </div>
 

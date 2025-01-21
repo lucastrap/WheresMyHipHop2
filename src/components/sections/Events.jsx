@@ -1,5 +1,4 @@
 import {useEffect, useState} from 'react';
-import {Link, NavLink} from 'react-router-dom';
 
 import WIMHH_Dj from '../../assets/images/WIMHH-DJ.jpg';
 import WIMHH_BEATBOX from '../../assets/images/WIMHH-BEATBOX.jpg';
@@ -9,6 +8,7 @@ import WIMHH_GRAPH from '../../assets/images/WIMHH-GRAPH.jpg';
 import WIMHH_GALLERY from '../../assets/images/WIMHH-GALLERY.jpg';
 
 const Events = () => {
+    const [isVisible, setIsVisible] = useState(false);
     const [timeLeft, setTimeLeft] = useState({
         days: 0,
         hours: 0,
@@ -17,6 +17,8 @@ const Events = () => {
     });
 
     useEffect(() => {
+        setIsVisible(true);
+
         const calculateTimeLeft = () => {
             const eventDate = new Date('2025-05-10T08:00:00').getTime();
             const now = new Date().getTime();
@@ -75,15 +77,57 @@ const Events = () => {
             title: "Voir les photos",
             miniDescription: "Vivez nos événements en photos !",
             description: "Vivez nos événements en photos !",
+            icon: "📸"
+        }
+    ];
+
+    const packs = [
+        {
+            title: "PACK SOLO",
+            subtitle: "1 STAGE AU CHOIX",
+            features: [
+                "Accès à un atelier",
+                "Style au choix",
+                "Pass une journée"
+            ]
+        },
+        {
+            title: "2PACK",
+            subtitle: "2 STAGES AU CHOIX",
+            features: [
+                "Accès à deux ateliers",
+                "Choix parmi tous les styles",
+                "Pass pour les deux jours"
+            ]
+        },
+        {
+            title: "3STYLE PACK",
+            subtitle: "3 STAGES AU CHOIX",
+            features: [
+                "Accès à trois ateliers",
+                "Mix de styles possible",
+                "Pass pour les deux jours"
+            ]
+        },
+        {
+            title: "ALL EYES ON ME PACK",
+            subtitle: "TOUS LES STAGES",
+            features: [
+                "Accès illimité aux ateliers",
+                "Tous les styles inclus",
+                "Pass VIP deux jours"
+            ]
         }
     ];
 
     return (
-        <section id="events" className="bg-black text-white py-20">
+        <section id="events" className="bg-black text-white py-10">
             <div className="max-w-6xl mx-auto px-4">
-                {/* Compteur */}
-                <div className="text-center mb-10 md:mb-20">
-                    <div className="text-center mb-6 md:mb-8">
+                {/* Compteur avec animation */}
+                <div className={`text-center mb-20 transform transition-all duration-1000 ${
+                    isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                }`}>
+                    <div className="text-center mb-8">
                         <h2 className="text-2xl md:text-5xl font-bold mb-2">
                             PRÊT POUR L'ÉDITION 2025 ?
                         </h2>
@@ -91,46 +135,48 @@ const Events = () => {
                             RENDEZ-VOUS LES 10 ET 11 MAI
                         </p>
                     </div>
+
                     <div className="flex justify-center items-center gap-2 md:gap-8 flex-wrap">
-                        <div className="text-center">
-                            <div className="bg-hiphop-orange rounded-lg p-3 md:p-6 min-w-[70px] md:min-w-[100px]">
-                                <span
-                                    className="text-2xl md:text-5xl font-bold">{String(timeLeft.days).padStart(2, '0')}</span>
-                                <p className="text-xs md:text-base mt-1 md:mt-2">JOURS</p>
+                        {[
+                            { value: timeLeft.days, label: "JOURS" },
+                            { value: timeLeft.hours, label: "HEURES" },
+                            { value: timeLeft.minutes, label: "MINUTES" },
+                            { value: timeLeft.seconds, label: "SECONDES" }
+                        ].map((time, index) => (
+                            <div
+                                key={index}
+                                className="text-center transform transition-all duration-500"
+                                style={{ transitionDelay: `${index * 200}ms` }}
+                            >
+                                <div className="relative group">
+                                    <div className="absolute -inset-1 bg-gradient-to-r from-hiphop-orange via-hiphop-orange/50 to-hiphop-orange opacity-20 group-hover:opacity-40 transition-opacity duration-300 blur-lg"/>
+                                    <div className="bg-gradient-to-br from-hiphop-orange to-hiphop-orange/80 rounded-lg p-3 md:p-6 min-w-[70px] md:min-w-[100px] relative">
+                                        <span className="text-2xl md:text-5xl font-bold">
+                                            {String(time.value).padStart(2, '0')}
+                                        </span>
+                                        <p className="text-xs md:text-base mt-1 md:mt-2">{time.label}</p>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <div className="text-center">
-                            <div className="bg-hiphop-orange rounded-lg p-3 md:p-6 min-w-[70px] md:min-w-[100px]">
-                                <span
-                                    className="text-2xl md:text-5xl font-bold">{String(timeLeft.hours).padStart(2, '0')}</span>
-                                <p className="text-xs md:text-base mt-1 md:mt-2">HEURES</p>
-                            </div>
-                        </div>
-                        <div className="text-center">
-                            <div className="bg-hiphop-orange rounded-lg p-3 md:p-6 min-w-[70px] md:min-w-[100px]">
-                                <span
-                                    className="text-2xl md:text-5xl font-bold">{String(timeLeft.minutes).padStart(2, '0')}</span>
-                                <p className="text-xs md:text-base mt-1 md:mt-2">MINUTES</p>
-                            </div>
-                        </div>
-                        <div className="text-center">
-                            <div className="bg-hiphop-orange rounded-lg p-3 md:p-6 min-w-[70px] md:min-w-[100px]">
-                                <span
-                                    className="text-2xl md:text-5xl font-bold">{String(timeLeft.seconds).padStart(2, '0')}</span>
-                                <p className="text-xs md:text-base mt-1 md:mt-2">SECONDES</p>
-                            </div>
-                        </div>
+                        ))}
                     </div>
                 </div>
 
-
                 {/* En-tête de section */}
-                <div className="text-center mb-16">
-                    <h2 className="text-4xl font-bold mb-4">Les stages durant l'événement</h2>
-                    <div className="w-24 h-1 bg-hiphop-orange mx-auto"></div>
+                <div className={`text-center mt-32 mb-16 transform transition-all duration-700 ${
+                    isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                }`}>
+                    <h2 className="text-4xl md:text-5xl font-bold text-hiphop-orange mb-6 relative">
+                        Les stages durant l'événement
+                        <div className="absolute -top-4 -right-4 w-12 h-12 border-t-2 border-r-2 border-hiphop-orange/30"/>
+                        <div className="absolute -bottom-4 -left-4 w-12 h-12 border-b-2 border-l-2 border-hiphop-orange/30"/>
+                    </h2>
+                    <div className="w-24 h-1 bg-hiphop-orange mx-auto relative">
+                        <div className="absolute -left-2 -top-2 w-4 h-4 bg-hiphop-orange/20 rounded-full blur-lg"/>
+                    </div>
                 </div>
 
-                {/* Grille d'événements */}
+                {/* Grille d'événements avec animation */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
                     {events.map((event, index) => (
                         <div
@@ -141,7 +187,7 @@ const Events = () => {
                             <img
                                 src={event.image}
                                 alt={event.title}
-                                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                             />
 
                             {/* Overlay spécial pour la galerie */}
@@ -162,15 +208,16 @@ const Events = () => {
                                 </div>
                             ) : (
                                 <>
-                                    {/* Overlay standard pour les autres événements */}
-                                    <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black via-black/70 to-transparent">
-                                        <h3 className="text-2xl font-bold mb-2">{event.title}</h3>
+                                    <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black via-black/70 to-transparent">
+                                        <div className="gap-3 mb-2">
+                                            <h3 className="text-2xl font-bold">{event.title}</h3>
+                                        </div>
                                         <p className="text-sm text-gray-300">{event.miniDescription}</p>
                                     </div>
 
-                                    <div className="absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                    <div className="absolute inset-0 bg-black/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                                         <div className="absolute top-1/2 left-0 right-0 p-6 text-center transform -translate-y-1/2">
-                                            <p className="text-lg text-hiphop-orange font-medium">{event.description}</p>
+                                            <p className="text-lg text-white leading-relaxed">{event.description}</p>
                                         </div>
                                     </div>
                                 </>
@@ -179,51 +226,41 @@ const Events = () => {
                     ))}
                 </div>
 
-                {/* Section des packs */}
-                <div id="packs" className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mb-16">
-                    {/* Pack Simple */}
-                    <div className="bg-hiphop-orange/10 p-4 md:p-8 rounded-lg border border-hiphop-orange/20 hover:border-hiphop-orange transition-all duration-300">
-                        <h3 className="text-xl md:text-2xl font-bold mb-2 md:mb-4">PACK SOLO</h3>
-                        <p className="mb-4 md:mb-6 text-gray-300">1 STAGE AU CHOIX</p>
-                        <ul className="space-y-2 md:space-y-3 text-gray-300 text-sm md:text-base mb-6 md:mb-8">
-                            <li>• Accès à un atelier</li>
-                            <li>• Style au choix</li>
-                            <li>• Pass une journée</li>
-                        </ul>
-                    </div>
+                {/* Section des packs avec animation */}
+                <div id="packs" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+                    {packs.map((pack, index) => (
+                        <div
+                            key={index}
+                            className={`relative group bg-gradient-to-br from-black via-black/90 to-hiphop-orange/10 p-6 rounded-lg border border-hiphop-orange/30 transition-all duration-500 overflow-hidden transform ${
+                                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                            }`}
+                            style={{ transitionDelay: `${600 + index * 200}ms` }}
+                        >
+                            {/* Effet de gradient au hover */}
+                            <div className="absolute inset-0 bg-gradient-to-br from-hiphop-orange/0 via-hiphop-orange/5 to-hiphop-orange/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"/>
 
-                    {/* 2PACK */}
-                    <div className="bg-hiphop-orange/10 p-4 md:p-8 rounded-lg border border-hiphop-orange/20 hover:border-hiphop-orange transition-all duration-300">
-                        <h3 className="text-xl md:text-2xl font-bold mb-2 md:mb-4">2PACK</h3>
-                        <p className="mb-4 md:mb-6 text-gray-300">2 STAGES AU CHOIX</p>
-                        <ul className="space-y-2 md:space-y-3 text-gray-300 text-sm md:text-base mb-6 md:mb-8">
-                            <li>• Accès à deux ateliers</li>
-                            <li>• Choix parmi tous les styles</li>
-                            <li>• Pass pour les deux jours</li>
-                        </ul>
-                    </div>
-
-                    {/* 3STYLE PACK */}
-                    <div className="bg-hiphop-orange/10 p-4 md:p-8 rounded-lg border border-hiphop-orange/20 hover:border-hiphop-orange transition-all duration-300">
-                        <h3 className="text-xl md:text-2xl font-bold mb-2 md:mb-4">3STYLE PACK</h3>
-                        <p className="mb-4 md:mb-6 text-gray-300">3 STAGES AU CHOIX</p>
-                        <ul className="space-y-2 md:space-y-3 text-gray-300 text-sm md:text-base mb-6 md:mb-8">
-                            <li>• Accès à trois ateliers</li>
-                            <li>• Mix de styles possible</li>
-                            <li>• Pass pour les deux jours</li>
-                        </ul>
-                    </div>
-
-                    {/* ALL EYES ON ME PACK */}
-                    <div className="bg-hiphop-orange/10 p-4 md:p-8 rounded-lg border border-hiphop-orange/20 hover:border-hiphop-orange transition-all duration-300">
-                        <h3 className="text-xl md:text-2xl font-bold mb-2 md:mb-4">ALL EYES ON ME PACK</h3>
-                        <p className="mb-4 md:mb-6 text-gray-300">TOUS LES STAGES</p>
-                        <ul className="space-y-2 md:space-y-3 text-gray-300 text-sm md:text-base mb-6 md:mb-8">
-                            <li>• Accès illimité aux ateliers</li>
-                            <li>• Tous les styles inclus</li>
-                            <li>• Pass VIP deux jours</li>
-                        </ul>
-                    </div>
+                            <div className="relative z-10">
+                                <h3 className="text-xl md:text-2xl font-bold text-hiphop-orange relative inline-block">
+                                    {pack.title}
+                                    <div className="absolute -bottom-0 left-0 w-0 h-0.5 bg-hiphop-orange group-hover:w-full transition-all duration-500"/>
+                                </h3>
+                                <p className="mb-4 text-gray-300">{pack.subtitle}</p>
+                                <ul className="space-y-3 text-gray-300">
+                                    {pack.features.map((feature, idx) => (
+                                        <li
+                                            key={idx}
+                                            className="flex items-center gap-2 group/item"
+                                        >
+                                            <span className="text-hiphop-orange transform group-hover/item:rotate-90 transition-transform duration-300">•</span>
+                                            <span className="group-hover/item:text-white transition-colors duration-300">
+                                                {feature}
+                                            </span>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                        </div>
+                    ))}
                 </div>
 
                 {/* Call to action centralisé */}
@@ -232,9 +269,13 @@ const Events = () => {
                         href="https://www.helloasso.com/votre-lien"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-block px-8 py-4 bg-hiphop-orange text-white text-xl font-bold rounded-lg hover:bg-opacity-90 transform hover:-translate-y-1 transition-all duration-300"
+                        className="relative inline-block group overflow-hidden transform transition-all duration-300 overflow-hidden hover:-translate-y-1"
                     >
-                        Découvrir les tarifs et réserver
+                        <div className="relative inline-block px-8 py-4 bg-hiphop-orange text-white text-xl font-bold rounded-lg hover:bg-opacity-90 transform transition-all duration-300 overflow-hidden">
+                            {/* Effet de brillance */}
+                            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-200%] group-hover:translate-x-[200%] transition-all duration-1000"/>
+                            <span className="relative">Découvrir les tarifs et réserver</span>
+                        </div>
                     </a>
                 </div>
             </div>

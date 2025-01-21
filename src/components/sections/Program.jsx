@@ -1,10 +1,13 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { MapPin } from 'lucide-react';
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 
 const Program = () => {
     const [activeDay, setActiveDay] = useState('day1');
-    const position = [43.6121, 1.4307]; // Coordonnées d'Ynov Toulouse
+    const [isVisible, setIsVisible] = useState(false);
+
+    useEffect(() => {
+        setIsVisible(true);
+    }, []);
 
     const schedule = {
         day1: [
@@ -31,41 +34,54 @@ const Program = () => {
             name: "DANSE",
             details: "Break, Popping, House Dance",
             capacity: "15 personnes max",
-            level: "Tous niveaux"
+            level: "Tous niveaux",
+            icon: "💃"
         },
         {
             name: "DJ",
             details: "Mix, Scratch, Production",
             capacity: "8 personnes max",
-            level: "Débutant accepté"
+            level: "Débutant accepté",
+            icon: "🎧"
         },
         {
             name: "RAP",
             details: "Écriture, Flow, Recording",
             capacity: "12 personnes max",
-            level: "Tous niveaux"
+            level: "Tous niveaux",
+            icon: "🎤"
         },
         {
             name: "GRAFFITI",
             details: "Lettrage, Color, Design",
             capacity: "10 personnes max",
-            level: "Débutant accepté"
+            level: "Débutant accepté",
+            icon: "🎨"
         },
         {
             name: "BEATBOX",
             details: "Techniques vocales, sons, rythmes",
             capacity: "12 personnes max",
-            level: "Tous niveaux"
+            level: "Tous niveaux",
+            icon: "🎵"
         }
     ];
 
     return (
         <section id="program" className="bg-black text-white py-20">
             <div className="max-w-6xl mx-auto px-4">
-                {/* Titre de section */}
-                <div className="text-center mb-16">
-                    <h2 className="text-4xl font-bold mb-4">Programme</h2>
-                    <div className="w-24 h-1 bg-hiphop-orange mx-auto"></div>
+                {/* Titre de section avec animation */}
+                <div className={`text-center mb-16 transform transition-all duration-700 ${
+                    isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                }`}>
+                    <h2 className="text-4xl md:text-5xl font-bold text-hiphop-orange mb-6 relative">
+                        Programme
+                        <div className="absolute -top-4 -right-4 w-12 h-12 border-t-2 border-r-2 border-hiphop-orange/30"/>
+                        <div className="absolute -bottom-4 -left-4 w-12 h-12 border-b-2 border-l-2 border-hiphop-orange/30"/>
+                    </h2>
+                    <div className="w-24 h-1 bg-hiphop-orange mx-auto relative">
+                        <div className="absolute -left-2 -top-2 w-4 h-4 bg-hiphop-orange/20 rounded-full blur-lg"/>
+                    </div>
                 </div>
 
                 {/* Sélecteur de jour */}
@@ -92,47 +108,64 @@ const Program = () => {
                     </button>
                 </div>
 
-                {/* Programme du jour */}
+                {/* Programme du jour avec animation */}
                 <div className="mb-20">
                     <div className="grid gap-4">
                         {schedule[activeDay].map((item, index) => (
                             <div
                                 key={index}
-                                className="bg-white/5 rounded-lg p-6 hover:bg-white/10 transition-all"
+                                className={`bg-gradient-to-r from-white/5 to-white/10 rounded-lg p-6 transform transition-all duration-100 relative group overflow-hidden ${
+                                    isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'
+                                }`}
                             >
-                                <div
-                                    className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                                <div className="absolute inset-0 bg-gradient-to-r from-hiphop-orange/0 via-hiphop-orange/5 to-hiphop-orange/0 opacity-0 group-hover:opacity-100 transition-opacity duration-100"/>
+
+                                <div className="relative flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
                                     <div className="flex items-center gap-4">
-                    <span className="text-hiphop-orange font-bold text-xl min-w-[120px]">
-                      {item.time}
-                    </span>
-                                        <span className="font-bold text-xl">
-                      {item.activity}
-                    </span>
+                                        <span className="text-hiphop-orange font-bold text-xl min-w-[120px]">
+                                            {item.time}
+                                        </span>
+                                        <span className="font-bold text-xl group-hover:text-hiphop-orange transition-colors duration-100">
+                                            {item.activity}
+                                        </span>
                                     </div>
-                                    <span className="text-gray-400">
-                    {item.location}
-                  </span>
+                                    <span className="text-gray-400 group-hover:text-white transition-colors duration-100">
+                                        {item.location}
+                                    </span>
                                 </div>
                             </div>
                         ))}
                     </div>
                 </div>
 
-                {/* Infos Workshops */}
-                <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-6">
+                {/* Workshops avec animation */}
+                <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-6 mb-20">
                     {workshops.map((workshop, index) => (
                         <div
                             key={index}
-                            className="bg-hiphop-orange/20 rounded-lg p-6 border border-hiphop-orange/30 hover:border-hiphop-orange transition-all"
+                            className={`bg-gradient-to-br from-black via-black/90 to-hiphop-orange/10 rounded-lg p-6 border border-hiphop-orange/30 transform transition-all duration-500 group relative overflow-hidden ${
+                                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                            }`}
+                            style={{ transitionDelay: `${600 + index * 100}ms` }}
                         >
-                            <h3 className="text-2xl font-bold mb-4 text-hiphop-orange">
-                                {workshop.name}
-                            </h3>
-                            <div className="space-y-2 text-gray-300">
-                                <p>{workshop.details}</p>
-                                <p>{workshop.capacity}</p>
-                                <p>{workshop.level}</p>
+                            {/* Effet de gradient au hover */}
+                            <div className="absolute inset-0 bg-gradient-to-br from-hiphop-orange/0 via-hiphop-orange/5 to-hiphop-orange/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"/>
+
+                            <div className="relative z-10">
+                                <div className="flex items-center gap-2 mb-4">
+                                    <span className="text-2xl group-hover:scale-125 transition-transform duration-300">
+                                        {workshop.icon}
+                                    </span>
+                                    <h3 className="text-2xl font-bold text-hiphop-orange relative inline-block">
+                                        {workshop.name}
+                                        <div className="absolute -bottom-1 left-0 w-0 h-0.5 bg-hiphop-orange group-hover:w-full transition-all duration-500"/>
+                                    </h3>
+                                </div>
+                                <div className="space-y-2 text-gray-300">
+                                    <p className="group-hover:text-white transition-colors duration-300">{workshop.details}</p>
+                                    <p className="text-sm">{workshop.capacity}</p>
+                                    <p className="text-sm">{workshop.level}</p>
+                                </div>
                             </div>
                         </div>
                     ))}

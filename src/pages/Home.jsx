@@ -4,6 +4,7 @@ import Program from "../components/sections/Program.jsx";
 import {useLocation} from "react-router-dom";
 import {useEffect} from "react";
 import Intro from "../components/sections/Intro.jsx";
+import AboutSection from "../components/sections/about.jsx";
 
 const Home = () => {
     const location = useLocation();
@@ -29,6 +30,7 @@ const Home = () => {
             <Intro />
             <Events />
             <Program />
+            <AboutSection/>
         </main>
     );
 };
