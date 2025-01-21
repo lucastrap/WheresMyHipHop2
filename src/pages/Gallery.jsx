@@ -97,7 +97,7 @@ const Gallery = () => {
                 ) : (
                     <div className="min-h-screen overflow-hidden pb-20">
                         <div
-                            className={`columns-1 md:columns-2 lg:columns-3 gap-4 break-inside-avoid transition-opacity duration-700 ${
+                            className={`columns-2 md:columns-2 lg:columns-3 gap-4 break-inside-avoid transition-opacity duration-700 ${
                                 isLoading || isChangingFilter ? 'opacity-0' : 'opacity-100'
                             }`}
                         >

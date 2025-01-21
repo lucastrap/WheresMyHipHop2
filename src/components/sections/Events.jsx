@@ -208,7 +208,13 @@ const Events = () => {
                                 </div>
                             ) : (
                                 <>
-                                    <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black via-black/70 to-transparent">
+                                    <div className="absolute top-0 right-0 p-2 group-hover:opacity-0 transition-opacity duration-300">
+                                        <span className="text-xs text-white/80 mt-2 hidden md:block">Survoler pour plus d'infos</span>
+                                        <span className="text-xs text-white/80 mt-2 block md:hidden">Cliquer pour plus d'infos</span>
+                                    </div>
+
+                                    <div
+                                        className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black via-black/70 to-transparent">
                                         <div className="gap-3 mb-2">
                                             <h3 className="text-2xl font-bold">{event.title}</h3>
                                         </div>
@@ -216,7 +222,7 @@ const Events = () => {
                                     </div>
 
                                     <div className="absolute inset-0 bg-black/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                        <div className="absolute top-1/2 left-0 right-0 p-6 text-center transform -translate-y-1/2">
+                                        <div className="absolute top-1/3 left-0 right-0 p-6 text-center transform -translate-y-1/2">
                                             <p className="text-lg text-white leading-relaxed">{event.description}</p>
                                         </div>
                                     </div>
@@ -227,32 +233,36 @@ const Events = () => {
                 </div>
 
                 {/* Section des packs avec animation */}
-                <div id="packs" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-                    {packs.map((pack, index) => (
+                <div id="packs" className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+                {packs.map((pack, index) => (
                         <div
                             key={index}
                             className={`relative group bg-gradient-to-br from-black via-black/90 to-hiphop-orange/10 p-6 rounded-lg border border-hiphop-orange/30 transition-all duration-500 overflow-hidden transform ${
                                 isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                             }`}
-                            style={{ transitionDelay: `${600 + index * 200}ms` }}
+                            style={{transitionDelay: `${600 + index * 200}ms`}}
                         >
                             {/* Effet de gradient au hover */}
-                            <div className="absolute inset-0 bg-gradient-to-br from-hiphop-orange/0 via-hiphop-orange/5 to-hiphop-orange/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"/>
+                            <div
+                                className="absolute inset-0 bg-gradient-to-br from-hiphop-orange/0 via-hiphop-orange/5 to-hiphop-orange/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"/>
 
                             <div className="relative z-10">
-                                <h3 className="text-xl md:text-2xl font-bold text-hiphop-orange relative inline-block">
+                                <h3 className="text-lg md:text-2xl font-bold text-hiphop-orange relative inline-block">
                                     {pack.title}
-                                    <div className="absolute -bottom-0 left-0 w-0 h-0.5 bg-hiphop-orange group-hover:w-full transition-all duration-500"/>
+                                    <div
+                                        className="absolute -bottom-0 left-0 w-0 h-0.5 bg-hiphop-orange group-hover:w-full transition-all duration-500"/>
                                 </h3>
-                                <p className="mb-4 text-gray-300">{pack.subtitle}</p>
+                                <p className="text-sm md:text-base mb-4 text-gray-300">{pack.subtitle}</p>
                                 <ul className="space-y-3 text-gray-300">
                                     {pack.features.map((feature, idx) => (
                                         <li
                                             key={idx}
                                             className="flex items-center gap-2 group/item"
                                         >
-                                            <span className="text-hiphop-orange transform group-hover/item:rotate-90 transition-transform duration-300">•</span>
-                                            <span className="group-hover/item:text-white transition-colors duration-300">
+                                            <span
+                                                className="text-hiphop-orange transform group-hover/item:rotate-90 transition-transform duration-300">•</span>
+                                            <span
+                                                className="text-sm md:text-base group-hover/item:text-white transition-colors duration-300">
                                                 {feature}
                                             </span>
                                         </li>
@@ -271,9 +281,11 @@ const Events = () => {
                         rel="noopener noreferrer"
                         className="relative inline-block group overflow-hidden transform transition-all duration-300 overflow-hidden hover:-translate-y-1"
                     >
-                        <div className="relative inline-block px-8 py-4 bg-hiphop-orange text-white text-xl font-bold rounded-lg hover:bg-opacity-90 transform transition-all duration-300 overflow-hidden">
+                        <div
+                            className="relative inline-block px-8 py-4 bg-hiphop-orange text-white text-xl font-bold rounded-lg hover:bg-opacity-90 transform transition-all duration-300 overflow-hidden">
                             {/* Effet de brillance */}
-                            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-200%] group-hover:translate-x-[200%] transition-all duration-1000"/>
+                            <div
+                                className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-200%] group-hover:translate-x-[200%] transition-all duration-1000"/>
                             <span className="relative">Découvrir les tarifs et réserver</span>
                         </div>
                     </a>

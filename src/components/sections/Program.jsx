@@ -122,14 +122,14 @@ const Program = () => {
 
                                 <div className="relative flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
                                     <div className="flex items-center gap-4">
-                                        <span className="text-hiphop-orange font-bold text-xl min-w-[120px]">
+                                        <span className="text-hiphop-orange font-bold text-md md:text-xl min-w-[120px]">
                                             {item.time}
                                         </span>
-                                        <span className="font-bold text-xl group-hover:text-hiphop-orange transition-colors duration-100">
+                                        <span className="font-bold md:text-xl group-hover:text-hiphop-orange transition-colors duration-100">
                                             {item.activity}
                                         </span>
                                     </div>
-                                    <span className="text-gray-400 group-hover:text-white transition-colors duration-100">
+                                    <span className="text-gray-400 group-hover:text-white transition-colors duration-100 -mt-5">
                                         {item.location}
                                     </span>
                                 </div>
@@ -139,13 +139,14 @@ const Program = () => {
                 </div>
 
                 {/* Workshops avec animation */}
-                <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-6 mb-20">
+                <div className="grid grid-cols-2 lg:grid-cols-5 gap-6 mb-20">
                     {workshops.map((workshop, index) => (
                         <div
                             key={index}
-                            className={`bg-gradient-to-br from-black via-black/90 to-hiphop-orange/10 rounded-lg p-6 border border-hiphop-orange/30 transform transition-all duration-500 group relative overflow-hidden ${
-                                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-                            }`}
+                            className={`bg-gradient-to-br from-black via-black/90 to-hiphop-orange/10 rounded-lg p-6 border border-hiphop-orange/30 transform transition-all duration-500 group relative overflow-hidden
+                                ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}
+                                ${index === 2 ? 'col-span-2 md:col-span-1' : ''}`
+                            }
                             style={{ transitionDelay: `${600 + index * 100}ms` }}
                         >
                             {/* Effet de gradient au hover */}
@@ -153,18 +154,18 @@ const Program = () => {
 
                             <div className="relative z-10">
                                 <div className="flex items-center gap-2 mb-4">
-                                    <span className="text-2xl group-hover:scale-125 transition-transform duration-300">
+                                    <span className="md:text-2xl group-hover:scale-125 transition-transform duration-300">
                                         {workshop.icon}
                                     </span>
-                                    <h3 className="text-2xl font-bold text-hiphop-orange relative inline-block">
+                                    <h3 className="md:text-2xl font-bold text-hiphop-orange relative inline-block">
                                         {workshop.name}
                                         <div className="absolute -bottom-1 left-0 w-0 h-0.5 bg-hiphop-orange group-hover:w-full transition-all duration-500"/>
                                     </h3>
                                 </div>
                                 <div className="space-y-2 text-gray-300">
-                                    <p className="group-hover:text-white transition-colors duration-300">{workshop.details}</p>
-                                    <p className="text-sm">{workshop.capacity}</p>
-                                    <p className="text-sm">{workshop.level}</p>
+                                    <p className="text-white transition-colors duration-300">{workshop.details}</p>
+                                    <li className="marker:text-hiphop-orange text-sm">{workshop.capacity}</li>
+                                    <li className="marker:text-hiphop-orange text-sm">{workshop.level}</li>
                                 </div>
                             </div>
                         </div>
@@ -188,7 +189,7 @@ const Program = () => {
                         {/* Interactive Map */}
                         {/* Carte Google Maps */}
                         <div className="w-full md:w4/3">
-                            <div className="h-[400px] md:h-[400px] rounded-lg overflow-hidden">
+                            <div className="h-[300px] md:h-[400px] rounded-lg overflow-hidden">
                                 <iframe
                                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5779.676011254147!2d1.4285343766459877!3d43.61172197117634!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12aebdbb42d83293%3A0x6e448c24640106bd!2sToulouse%20Ynov%20Campus!5e0!3m2!1sfr!2sfr"
                                     width="100%"

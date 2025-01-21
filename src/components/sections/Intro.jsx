@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import eventVideo from '../../assets/videos/event-2024.mp4';
+import {array} from "ts-interface-checker";
 
 const Intro = () => {
     const [isVisible, setIsVisible] = useState(false);
@@ -84,7 +85,7 @@ const Intro = () => {
                 </div>
 
                 {/* Points clés avec animation */}
-                <div className="grid md:grid-cols-3 gap-8 mb-20">
+                <div className="grid grid-cols-2 md:grid-cols-3 gap-8 mb-20">
                     {[
                         {
                             title: "Pour Tous les Niveaux",
@@ -103,18 +104,19 @@ const Intro = () => {
                             key={index}
                             className={`bg-black/50 p-6 rounded-lg border border-hiphop-orange/30 transition-all duration-500 transform relative group overflow-hidden ${
                                 isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-                            }`}
+                            } ${index === 2 ? 'col-span-2 md:col-span-1' : ''}`}
                             style={{ transitionDelay: `${600 + index * 200}ms` }}
                         >
                             {/* Fond avec effet de gradient animé */}
                             <div className="absolute inset-0 bg-gradient-to-br from-hiphop-orange/0 via-hiphop-orange/5 to-hiphop-orange/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"/>
 
                             <div className="relative z-10">
-                                <h3 className="text-xl font-bold mb-4 text-hiphop-orange relative inline-block">
+                                <h3 className="text-base md:text-xl font-bold mb-4 text-hiphop-orange relative inline-block">
                                     {item.title}
-                                    <div className="absolute -bottom-1 left-0 w-0 h-0.5 bg-hiphop-orange group-hover:w-full transition-all duration-500"/>
+                                    <div
+                                        className="absolute -bottom-1 left-0 w-0 h-0.5 bg-hiphop-orange group-hover:w-full transition-all duration-500"/>
                                 </h3>
-                                <p className="text-gray-300 group-hover:text-white transition-colors duration-300">{item.text}</p>
+                                <p className="text-sm md:text-base text-gray-300 group-hover:text-white transition-colors duration-300">{item.text}</p>
                             </div>
                         </div>
                     ))}
