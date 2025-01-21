@@ -1,20 +1,15 @@
 import { defineConfig } from 'vite';
-import path from 'path';
+import react from '@vitejs/plugin-react';
 
 export default defineConfig({
-  resolve: {
-    alias: {
-      // Define an alias for the assets directory
-      '@assets': path.resolve(__dirname, './assets')
-    }
-  },
+  plugins: [react()],
   server: {
     // Set Content Security Policy headers
     csp: true,
     // Set up CORS headers
-    //cors: true,
+    // cors: true,
     // Enable HTTPS for development server (optional)
-    //https: true
+    // https: true
   },
   build: {
     // Enable file hashing
@@ -25,4 +20,3 @@ export default defineConfig({
     brotliSize: false
   }
 });
-
