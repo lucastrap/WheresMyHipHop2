@@ -8,6 +8,7 @@ import AboutSection from "../components/sections/about.jsx";
 import Contact from "../components/sections/Contact.jsx";
 import History from "../components/sections/History.jsx";
 import Insta from "../components/sections/Insta.jsx";
+import ScrollingBanner from '../components/layout/ScrollingBanner'; // Import du composant
 
 const Home = () => {
     const location = useLocation();
@@ -36,6 +37,7 @@ const Home = () => {
             <History/>
             <AboutSection/>
             <Insta/>
+            <ScrollingBanner />
             <Contact/>
         </main>
     );
