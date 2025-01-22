@@ -43,11 +43,10 @@ const AboutSection = () => {
         <section id="about" className="bg-black text-white py-20">
             <div className="max-w-6xl mx-auto px-4">
                 {/* En-tête de section */}
-                <div className="text-center mb-16">
-                    <h2 className="text-4xl md:text-5xl font-bold text-hiphop-orange mb-6">
+                <div className="text-center mb-10">
+                    <h2 className="text-4xl md:text-4xl font-bold text-hiphop-orange mb-6">
                         À PROPOS
                     </h2>
-                    <div className="w-24 h-1 bg-hiphop-orange mx-auto"></div>
                 </div>
 
                 {/* Grille des cartes */}

@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import '/src/css/contact.css'; // Importez votre CSS ici
+import '/src/css/history.css'; // Importez votre CSS ici
 
 const HTMLComponent = ({ htmlContent }) => {
     const containerRef = useRef(null);
@@ -27,7 +27,7 @@ const Contact = () => {
 
     useEffect(() => {
         // Charger le fichier HTML
-        fetch('/src/components/sections/Contact.html')
+        fetch('/src/components/sections/history.html')
             .then(response => response.text())
             .then(content => setHtmlContent(content))
             .catch(error => console.error('Error loading HTML:', error));

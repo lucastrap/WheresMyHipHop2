@@ -5,6 +5,8 @@ import {useLocation} from "react-router-dom";
 import {useEffect} from "react";
 import Intro from "../components/sections/Intro.jsx";
 import AboutSection from "../components/sections/about.jsx";
+import Contact from "../components/sections/Contact.jsx";
+import History from "../components/sections/History.jsx";
 
 const Home = () => {
     const location = useLocation();
@@ -26,11 +28,13 @@ const Home = () => {
 
     return (
         <main className="overflow-x-hidden">
-            <Hero />
-            <Intro />
-            <Events />
-            <Program />
+            <Hero/>
+            <Intro/>
+            <Events/>
+            <Program/>
+            <History/>
             <AboutSection/>
+            <Contact/>
         </main>
     );
 };
