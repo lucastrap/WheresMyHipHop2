@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import '/src/css/contact.css'; // Importez votre CSS ici
+import '/src/css/style.css'; // Importez votre CSS ici
 
 const HTMLComponent = ({ htmlContent }) => {
     const containerRef = useRef(null);
