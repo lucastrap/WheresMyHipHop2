@@ -1,0 +1,177 @@
+<!-- Contact Section-->
+<section id="contact_section">
+
+    <div class="contact_container">
+        <div class="contact_us_container">
+            <p class="contact_text">CONTACTEZ NOUS</p>
+            <div class="alert alert-success" id="successMessage">
+                Votre message a été envoyé avec succès !
+            </div>
+            <div class="alert alert-error" id="errorMessage">
+                Une erreur s'est produite. Veuillez réessayer.
+            </div>
+
+            <form id="contactForm" action="https://formspree.io/f/xlddqyww" method="POST">
+                <div class="form-group">
+                    <input class="input_textarea" type="email" id="email" name="email" placeholder="Votre email *" required>
+                    <div class="error" id="emailError" >Veuillez entrer une adresse email valide</div>
+                </div>
+
+                <div class="form-group">
+                    <input class="input_textarea" type="text" id="subject" name="subject" placeholder="Sujet *" required>
+                    <div class="error" id="subjectError">Veuillez entrer un sujet</div>
+                </div>
+
+                <div class="form-group">
+                    <textarea class="input_textarea textarea" id="message" name="message" placeholder="Votre message *" required></textarea>
+                    <div class="error" id="messageError">Veuillez entrer votre message</div>
+                </div>
+
+                <button class="button" type="submit">Envoyer <span class="button-arrow">→</span></button>
+                <div class="loading" id="loading">Envoi en cours...</div>
+            </form>
+        </div>
+        <div class="contact_partnership_container">
+            <p class="contact_text"> NOS PARTENAIRES</p>
+            <div class="contact_partnership_logo_container">
+                <img class="contact_logo_partnership" src="/src/assets/images/logo_SoundWorkerz.png" alt="Logo SoundWorkerz">
+                <img class="contact_logo_partnership" src="/src/assets/images/logo_hopus.png" alt="Logo Hopus">
+                <img class="contact_logo_partnership" src="/src/assets/images/logo_ynov_campus_toulouse.png" alt="Logo Ynov Campus">
+                <img class="contact_logo_partnership" src="/src/assets/images/logo_cd-cartouche-agir-avec-vous.png" alt="Logo CD Cartouche agir avec vous">
+                <img class="contact_logo_partnership" src="/src/assets/images/logo-ambitionjeunesses.png" alt="Logo Ambition Jeunesses">
+                <img class="contact_logo_partnership" src="/src/assets/images/logo_eight_ball.jpg" alt="Logo Eight Ball">
+                <img class="contact_logo_partnership" src="/src/assets/images/logo_alphab.png" alt="Logo Alphab">
+                <img class="contact_logo_partnership" src="/src/assets/images/logo_edls.jpg" alt="Logo EDLS">
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    const form = document.getElementById('contactForm');
+    const successMessage = document.getElementById('successMessage');
+    const errorMessage = document.getElementById('errorMessage');
+    const loading = document.getElementById('loading');
+
+    const sujet = document.getElementById('subject');
+    const messageField = document.getElementById('message');
+
+    // Ajout du compteur de caractères
+    const charCountDiv = document.createElement('div');
+    charCountDiv.className = 'char-count';
+    charCountDiv.id = 'charCount';
+    sujet.parentNode.appendChild(charCountDiv);
+
+    function updateCharCount() {
+        const count = messageField.value.length; // Compte le nombre de caractères
+        charCountDiv.textContent = `${count} / 1000`; // Met à jour le texte du compteur
+
+        // Ajout d'une marge et d'une couleur basée sur le seuil
+        charCountDiv.style.color = count > 900 ? '#fb1c04' : '#666'; // Couleur d'avertissement
+        charCountDiv.style.fontWeight = count > 900 ? 'bold' : 'normal'; // Texte en gras si proche de la limite
+
+        // Décaler le texte de 20px vers la droite
+        charCountDiv.style.marginLeft = '20px';
+
+        // Gestion d'un cas où le maximum est dépassé
+        if (count > 1000) {
+            charCountDiv.style.color = '#d81803'; // Rouge vif si dépassement
+        }
+    }
+
+
+    function isValidEmail(email) {
+        const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return re.test(email);
+    }
+
+    function showError(fieldId, show) {
+        const errorElement = document.getElementById(fieldId + 'Error');
+        errorElement.style.display = show ? 'block' : 'none';
+    }
+
+    function validateField(field) {
+        let isValid = true;
+
+        if (field.id === 'email') {
+            isValid = isValidEmail(field.value);
+        } else if (field.id === 'message') {
+            isValid = field.value.trim() !== '' && field.value.length <= 1000;
+            if (!isValid) {
+                const errorElement = document.getElementById('messageError');
+                errorElement.textContent = field.value.length > 1000
+                    ? '1000 caractères maximum autorisés'
+                    : 'Veuillez entrer votre message';
+            }
+        } else {
+            isValid = field.value.trim() !== '';
+        }
+
+        showError(field.id, !isValid);
+        return isValid;
+    }
+
+    // Ajout de l'événement input pour le compteur de caractères
+    messageField.addEventListener('input', updateCharCount);
+
+    ['email', 'subject', 'message'].forEach(fieldId => {
+        const field = document.getElementById(fieldId);
+        field.addEventListener('blur', () => validateField(field));
+        field.addEventListener('input', () => {
+            if (field.value.trim() !== '') {
+                showError(field.id, false);
+            }
+            if (field.id === 'message') {
+                updateCharCount();
+            }
+        });
+    });
+
+    form.addEventListener('submit', async function(event) {
+        event.preventDefault();
+
+        let isValid = true;
+        ['email', 'subject', 'message'].forEach(fieldId => {
+            const field = document.getElementById(fieldId);
+            if (!validateField(field)) {
+                isValid = false;
+            }
+        });
+
+        if (!isValid) {
+            return;
+        }
+
+        successMessage.style.display = 'none';
+        errorMessage.style.display = 'none';
+        loading.style.display = 'block';
+
+        try {
+            const response = await fetch(form.action, {
+                method: 'POST',
+                body: new FormData(form),
+                headers: {
+                    'Accept': 'application/json'
+                }
+            });
+
+            if (response.ok) {
+                form.reset();
+                updateCharCount(); // Réinitialiser le compteur
+                successMessage.style.display = 'block';
+                setTimeout(() => {
+                    successMessage.style.display = 'none';
+                }, 1000);
+            } else {
+                errorMessage.style.display = 'block';
+            }
+        } catch (error) {
+            errorMessage.style.display = 'block';
+        }
+
+        loading.style.display = 'none';
+    });
+
+    // Initialiser le compteur de caractères
+    updateCharCount();
+</script>

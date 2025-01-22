@@ -1,0 +1,256 @@
+.history_h2 {
+  color: var(--color-rouge);
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  font-weight: bold;
+}
+
+.history_p {
+  color: white;
+  font-size: 1.2rem;
+  line-height: 1.5;
+}
+
+
+.history_section {
+  width: 100%;
+  min-height: 60vh;
+  max-height: 90vh;
+  position: relative;
+  overflow: hidden;
+}
+
+.history_title {
+  text-align: center;
+  padding: 2rem 0;
+  font-size: 2.5rem;
+  color: white;
+  position: relative;
+  z-index: 2;
+  margin: 0;
+}
+
+.histoirebody {
+  box-sizing: border-box;
+  display: flex;
+  margin-top: 50px;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 100px);
+  width: 100%;
+  background: #000000;
+  padding: 20px;
+}
+
+.containerhistory {
+  position: relative;
+  width: 1200px;
+  height: 800px;
+  background: #000000;
+  overflow: hidden;
+}
+
+.containerhistory .clip {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transition: clip-path 0.5s ease-in-out;
+  z-index: 1;
+}
+
+.section-word {
+  position: absolute;
+  color: white;
+  font-size: 3rem;
+  font-weight: bold;
+  z-index: 2;
+  transition: opacity 0.3s ease;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.clip1 .section-word {
+  top: 35%;
+  left: 15%;
+  transform: translate(-50%, -50%);
+}
+
+.clip2 .section-word {
+  top: 50%;
+  left: 40%;
+  transform: translate(-50%, -50%);
+}
+
+.clip3 .section-word {
+  top: 60%;
+  left: 77%;
+  transform: translate(-50%, -50%);
+}
+
+.containerhistory .clip.clip1 {
+  background-size: cover;
+  background-image: url(/src/assets/images/image2.jpg);
+  clip-path: polygon(0 0, 42% 0, 15% 100%, 0% 100%);
+  filter: brightness(100%);
+}
+
+.containerhistory .clip.clip2 {
+  background-size: cover;
+  background-image: url(/src/assets/images/image3.jpg);
+  clip-path: polygon(38% 0, 80% 0, 70% 100%, 11% 100%);
+  filter: brightness(100%);
+}
+
+.containerhistory .clip.clip3 {
+  background-image: url(/src/assets/images/image1.jpg);
+  background-size: cover;
+  clip-path: polygon(66% 0, 100% 0, 100% 100%, 47% 100%);
+  filter: brightness(100%);
+}
+
+.containerhistory:hover .clip {
+  clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%);
+}
+
+.containerhistory .clip:hover {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+  filter: brightness(80%);
+  z-index: 3;
+}
+
+.containerhistory .clip:hover .section-word {
+  opacity: 0;
+}
+
+.containerhistory .clip .content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 70%;
+  padding: 20px;
+  opacity: 0;
+  transition: 0.5s;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.7);
+  border-radius: 10px;
+  z-index: 4;
+}
+
+.containerhistory .clip:hover .content {
+  opacity: 1;
+}
+
+/* Styles mobiles pour les écrans de moins de 768px */
+@media (max-width: 768px) {
+  
+.histoirebody {
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 100px);
+  width: 100%;
+  background: #000000;
+  padding: 20px;
+}
+  .history_section {
+    width: 100%;
+    min-height: 60vh;
+    max-height: 120vh;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .histoirebody {
+    height: 100vh;
+    padding: 10px;
+  }
+
+  .containerhistory {
+    width: 100%;
+    height: 90vh;
+  }
+
+  .containerhistory .clip {
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  /* Modification des clips pour un découpage horizontal */
+  .containerhistory .clip.clip1 {
+    clip-path: polygon(0 0, 100% 0, 100% 33.33%, 0 33.33%);
+  }
+
+  .containerhistory .clip.clip2 {
+    clip-path: polygon(0 33.33%, 100% 33.33%, 100% 66.66%, 0 66.66%);
+  }
+
+  .containerhistory .clip.clip3 {
+    clip-path: polygon(0 66.66%, 100% 66.66%, 100% 100%, 0 100%);
+  }
+
+  /* Ajustement des positions des mots pour le mobile */
+  .clip1 .section-word {
+    top: 16%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .clip2 .section-word {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .clip3 .section-word {
+    top: 83%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  /* Réduction de la taille des textes */
+  .section-word {
+    font-size: 1.8rem; /* Taille réduite pour mobile */
+    width: 100%;
+    text-align: center;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+
+  .content h2 {
+    font-size: 1.5rem;
+  }
+
+  .content p {
+    font-size: 0.8rem;
+  }
+
+  /* Styles pour le contenu */
+  .containerhistory .clip .content {
+    width: 70%; /* Contrôle de la largeur */
+    padding: 15px; /* Espace interne */
+}
+
+
+  /* Suppression des effets hover */
+  .containerhistory:hover .clip {
+    clip-path: none;
+  }
+
+  /* Ajout de la classe active pour le comportement tactile */
+  .containerhistory .clip.active {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    z-index: 3;
+  }
+
+  .containerhistory .clip.active .section-word {
+    opacity: 0;
+  }
+
+  .containerhistory .clip.active .content {
+    opacity: 1;
+  }
+}

@@ -1,0 +1,459 @@
+/******************** CONTACT SECTION ********************/
+/******************* NORMAL SCREEN SIZE**********************/
+
+.contact_container{
+  display: flex;
+}
+
+/* Title of the section */
+.contact_title {
+    margin: 2rem 0 2rem 2rem;
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--text-color);
+  }
+
+.contact_text{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  font-weight: 700;
+  width: 100%;
+}
+
+.contact_us_container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 80%;
+}
+
+.contact_logo_instagram{
+  width: 5vw;
+  height: auto;
+}
+
+
+
+.contact_logo_partnership{
+    width: 12vw;
+    height: auto;
+}
+
+.contact_partnership_container {
+  mask-image: url('/src/assets/images/paperrip2.svg');
+  mask-size: cover;
+  mask-repeat: no-repeat;
+  object-fit: cover;
+  background-color: var(--secondary-color);
+  height: 80vh;
+  width: 100%;
+  padding:0 0 2rem 5rem;
+}
+
+.contact_partnership_logo_container{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Three columns with equal width */
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.contact_partnership_logo_container img {
+  width: 80%; /* Ensure images don't exceed their container width */
+}
+
+/* Media query for computer screens (e.g., tablets) */
+@media screen and (min-width: 1200px) and (max-width: 1400px) {
+#contact_section{
+  background-color: var(--primary-color);
+}
+
+.contact_container{
+  display: flex;
+}
+
+/* Title of the section */
+.contact_title {
+    margin: 2rem 0 2rem 2rem;
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--text-color);
+  }
+
+  .contact_text{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    font-weight: 700;
+    width: 100%;
+  }
+
+  .contact_us_container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+  }
+
+  .contact_logo_instagram{
+    width: 5vw;
+    height: auto;
+}
+
+
+
+.contact_logo_partnership{
+    width: 12vw;
+    height: auto;
+}
+
+.contact_partnership_container {
+    mask-image: url('/src/assets/images/paperrip2.svg');
+    mask-size: cover;
+    mask-repeat: no-repeat;
+    object-fit: cover;
+    background-color: var(--secondary-color);
+    height: 100%;
+    width: 100%;
+    padding-left: 5rem;
+  }
+
+  .contact_partnership_logo_container{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Three columns with equal width */
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+  }
+
+
+  .contact_partnership_logo_container img {
+    width: 80%; /* Ensure images don't exceed their container width */
+  }
+
+}
+
+/* Media query for tablet screens (e.g., tablets) */
+@media screen and (min-width:1000px ) and (max-width: 1200px) {
+  #contact_section{
+    background-color: var(--primary-color);
+  }
+
+  .contact_container{
+    display: flex;
+  }
+
+  /* Title of the section */
+  .contact_title {
+    margin: 2rem 0 2rem 2rem;
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--text-color);
+  }
+
+  .contact_text{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    font-weight: 700;
+    width: 100%;
+  }
+
+  .contact_us_container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+  }
+
+  .contact_logo_instagram{
+    width: 5vw;
+    height: auto;
+  }
+
+
+
+  .contact_logo_partnership{
+      width: 12vw;
+      height: auto;
+  }
+
+  .contact_partnership_container {
+    mask-image: url('/src/assets/images/paperrip2.svg');
+    mask-size: cover;
+    mask-repeat: no-repeat;
+    object-fit: cover;
+    background-color: var(--secondary-color);
+    height: 100%;
+    width: 100%;
+    padding-left: 5rem;
+  }
+
+  .contact_partnership_logo_container{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Three columns with equal width */
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+  }
+
+
+  .contact_partnership_logo_container img {
+    width: 80%; /* Ensure images don't exceed their container width */
+  }
+}
+
+/* Media query for small screens (e.g., mobile devices) */
+@media screen and (min-width: 769px) and (max-width: 1000px) {
+
+#contact_section{
+    background-color: var(--secondary-color);
+  }
+
+  .contact_container{
+    display: block;
+  }
+
+  /* Title of the section */
+  .contact_title {
+      margin: 2rem 0 2rem 2rem;
+      padding: 2rem 0 0 0;
+      font-size: 3rem;
+      font-weight: 700;
+      color: var(--text-color);
+    }
+
+    .contact_text{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      font-weight: 700;
+      width: 100%;
+    }
+
+    .contact_us_container{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+    }
+
+    .contact_logo_instagram{
+      width: 10vw; /* or any desired width */
+  }
+
+  .contact_logo_partnership{
+      width: 12vw;
+      height: auto;
+  }
+
+    .contact_partnership_container {
+      margin: 3rem 0 0 0 ;
+      padding: 0 2rem 2rem 2rem;
+        mask-image: none;
+        mask-size: auto;
+        mask-repeat: no-repeat;
+        object-fit: fill; /* or any other appropriate value */
+        background-color: transparent; /* or any other desired background color */
+        height: auto; /* or any other desired height */
+        width: auto; /* or any other desired width */
+    }
+
+    .contact_partnership_logo_container{
+      display: grid;
+      grid-template-columns: repeat(3, 1fr); /* Three columns with equal width */
+      gap: 20px;
+      align-items: center;
+      justify-content: center;
+    }
+
+
+    .contact_partnership_logo_container img {
+      width: 100%; /* Ensure images don't exceed their container width */
+    }
+}
+
+
+/* Media query for smaller screens (e.g., mobile devices) */
+@media screen and (min-width: 450px) and (max-width: 769px) {
+
+
+  #contact_section{
+    background-color: var(--secondary-color);
+  }
+
+  .contact_container{
+    display: block;
+  }
+
+  /* Title of the section */
+  .contact_title {
+      margin: 2rem 0 2rem 2rem;
+      padding: 2rem 0 0 0;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--text-color);
+    }
+
+    .contact_text{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      font-weight: 700;
+      width: 100%;
+    }
+
+    .contact_us_container{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+    }
+
+    .contact_logo_instagram{
+      width: 10vw; /* or any desired width */
+  }
+
+  .contact_logo_partnership{
+      width: 12vw;
+      height: auto;
+  }
+
+    .contact_partnership_container {
+      margin: 3rem 0 0 0 ;
+      padding: 0 2rem 2rem 2rem;
+        mask-image: none;
+        mask-size: auto;
+        mask-repeat: no-repeat;
+        object-fit: fill; /* or any other appropriate value */
+        background-color: transparent; /* or any other desired background color */
+        height: auto; /* or any other desired height */
+        width: auto; /* or any other desired width */
+    }
+
+    .contact_partnership_logo_container{
+      display: grid;
+      grid-template-columns: repeat(3, 1fr); /* Three columns with equal width */
+      gap: 20px;
+      align-items: center;
+      justify-content: center;
+    }
+
+
+    .contact_partnership_logo_container img {
+      width: 100%; /* Ensure images don't exceed their container width */
+    }
+
+    .link_legal_notice {
+      text-decoration: none;
+      color: var(--text-color);
+      float: right; /* Move the link to the right side */
+      margin: 2rem 1rem 1rem 0; /* Add some space between the link and other content */
+      font-weight: 600;
+      font-size: 1rem;
+    }
+
+    .link_legal_notice:hover {
+      color: var(--secondary-color); /* Change color on hover */
+    }
+}
+
+/* Media query for smaller screens (e.g., mobile devices) */
+@media screen and (min-width: 300px) and (max-width: 450px) {
+  #contact_section{
+    background-color: var(--secondary-color);
+  }
+
+  .contact_container{
+    display: block;
+ 
+  }
+
+  /* Title of the section */
+  .contact_title {
+      margin: 2rem 0 2rem 2rem;
+      padding: 2rem 0 0 0;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--text-color);
+    }
+
+    .contact_text{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      font-weight: 700;
+      width: 100%;
+    }
+
+    .contact_us_container{
+      
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+    }
+
+    .contact_logo_instagram{
+      width: 10vw; /* or any desired width */
+  }
+
+  .contact_logo_partnership{
+      width: 12vw;
+      height: auto;
+  }
+
+    .contact_partnership_container {
+      margin: 3rem 0 0 0 ;
+      padding: 0 2rem 2rem 2rem;
+        mask-image: none;
+        mask-size: auto;
+        mask-repeat: no-repeat;
+        object-fit: fill; /* or any other appropriate value */
+        background-color: transparent; /* or any other desired background color */
+        height: auto; /* or any other desired height */
+        width: auto; /* or any other desired width */
+    }
+
+    .contact_partnership_logo_container{
+      display: grid;
+      grid-template-columns: repeat(3, 1fr); /* Three columns with equal width */
+      gap: 20px;
+      align-items: center;
+      justify-content: center;
+    }
+
+
+    .contact_partnership_logo_container img {
+      width: 100%; /* Ensure images don't exceed their container width */
+    }
+
+    .link_legal_notice {
+      text-decoration: none;
+      color: var(--text-color);
+      float: right; /* Move the link to the right side */
+      margin: 2rem 1rem 1rem 0; /* Add some space between the link and other content */
+      font-weight: 600;
+      font-size: 1rem;
+    }
+
+    .link_legal_notice:hover {
+      color: var(--secondary-color); /* Change color on hover */
+    }
+
+}
+
