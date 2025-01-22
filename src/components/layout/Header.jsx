@@ -99,7 +99,7 @@ const Header = () => {
         { to: '/#intro', label: 'L\'Événements' },
         { to: '/#program', label: 'Programmation' },
         { to: '/#history', label: 'Notre Histoire' },
-        { to: '/#contact', label: 'Contact' },
+        { to: '/#contact_section', label: 'Contact' },
         { to: '/gallery', label: 'Galerie' },
     ];
 
