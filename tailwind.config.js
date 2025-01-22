@@ -7,7 +7,7 @@ export default {
   theme: {
     extend: {
       colors: {
-        'hiphop-orange': '#DE8229',
+        'hiphop-orange': '#fe1b00',
       },
       keyframes: {
         fadeIn: {

@@ -24,8 +24,13 @@ html {
 
   --color-rouge: #fb1c04;
   --primary-color: #000000;
-  --secondary-color: #de8229;
+  --secondary-color: #fe1b00;
   --text-color: #ffffff;
+}
+
+.text-rouge {
+  --tw-text-opacity: 1;
+  color: var(--color-rouge);
 }
 
 a {

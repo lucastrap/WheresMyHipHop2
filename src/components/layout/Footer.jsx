@@ -1,11 +1,11 @@
-import SW_LOGO from '../../assets/images/logo_SoundWorkerz.png';
+import SW_LOGO from '../../assets/images/logo_ws.png';
 
 
 const Footer = () => {
     const currentYear = new Date().getFullYear();
 
     return (
-        <footer className="bg-hiphop-orange text-white py-8">
+        <footer className="bg-hiphop-orange bg-opacity-5 text-white py-8">
             <div className="max-w-6xl mx-auto px-4">
                 <div className="flex flex-col md:flex-row justify-between items-center gap-4">
                     {/* Logo/Nom */}

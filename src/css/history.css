@@ -33,6 +33,7 @@
 .histoirebody {
   box-sizing: border-box;
   display: flex;
+  margin-top: 50px;
   justify-content: center;
   align-items: center;
   height: calc(100vh - 100px);
@@ -143,14 +144,33 @@
 
 /* Styles mobiles pour les écrans de moins de 768px */
 @media (max-width: 768px) {
+  
+.histoirebody {
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 100px);
+  width: 100%;
+  background: #000000;
+  padding: 20px;
+}
+  .history_section {
+    width: 100%;
+    min-height: 60vh;
+    max-height: 120vh;
+    position: relative;
+    overflow: hidden;
+  }
+  
   .histoirebody {
-    height: 70vh;
+    height: 100vh;
     padding: 10px;
   }
 
   .containerhistory {
     width: 100%;
-    height: 100vh;
+    height: 90vh;
   }
 
   .containerhistory .clip {

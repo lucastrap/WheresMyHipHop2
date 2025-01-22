@@ -39,8 +39,8 @@ const NavLink = ({ to, children, onClick, isCTA }) => {
                     absolute inset-0 rounded-full 
                     bg-gradient-to-r 
                     ${isCTA
-                    ? 'from-orange-500 via-orange-400 to-orange-500 opacity-100'
-                    : 'from-orange-500 via-orange-400 to-orange-500 opacity-0 group-hover:opacity-100'
+                    ? 'from-red-600 via-red-500 to-red-600 opacity-100'
+                    : 'from-red-600 via-red-500 to-red-600 opacity-0 group-hover:opacity-100'
                 } 
                     blur transition-all duration-300
                 `} />
@@ -53,12 +53,12 @@ const NavLink = ({ to, children, onClick, isCTA }) => {
                         absolute inset-0
                         backdrop-blur-md
                         ${isCTA
-                        ? 'bg-gradient-to-r from-orange-500 to-orange-400'
+                        ? 'bg-gradient-to-r from-red-600 to-red-500'
                         : 'bg-gradient-to-r from-white/10 to-white/25'
                     }
                         transition-all duration-500
-                        group-hover:border-orange-500/50
-                        group-hover:shadow-lg group-hover:shadow-orange-500/20
+                        group-hover:border-red-500/50
+                        group-hover:shadow-lg group-hover:shadow-red-500/20
                         ${isHovered ? 'scale-105' : 'scale-100'}
                     `} />
 
@@ -75,7 +75,7 @@ const NavLink = ({ to, children, onClick, isCTA }) => {
                             font-extrabold
                             ${isCTA
                             ? 'bg-gradient-to-r from-white to-white'
-                            : 'bg-gradient-to-r from-white to-white group-hover:from-orange-200 group-hover:to-orange-100'
+                            : 'bg-gradient-to-r from-white to-white group-hover:from-red-200 group-hover:to-red-100'
                         }
                             bg-clip-text text-transparent
                             transition-colors duration-300
@@ -177,7 +177,7 @@ const Header = () => {
                             className="relative group p-2 overflow-hidden rounded-lg"
                             aria-label="Menu"
                         >
-                            <div className="absolute inset-0 bg-gradient-to-r from-orange-500/30 via-orange-400/30 to-orange-500/30 opacity-0 group-hover:opacity-100 blur-xl transition-all duration-500" />
+                            <div className="absolute inset-0 bg-gradient-to-r from-red-500/30 via-red-400/30 to-red-500/30 opacity-0 group-hover:opacity-100 blur-xl transition-all duration-500" />
                             <div className="relative">
                                 <div className={`w-6 h-0.5 bg-white mb-1.5 transition-all duration-300 ${isMenuOpen ? 'rotate-45 translate-y-2' : ''}`} />
                                 <div className={`w-6 h-0.5 bg-white mb-1.5 transition-all duration-300 ${isMenuOpen ? 'opacity-0' : ''}`} />
@@ -190,8 +190,8 @@ const Header = () => {
                 {/* Mobile Menu */}
                 {isMenuOpen && (
                     <div className="lg:hidden mt-4 mx-4">
-                        <div className="relative overflow-hidden rounded-xl backdrop-blur-2xl bg-gradient-to-b from-black/80 to-black/60 shadow-lg shadow-orange-500/10">
-                            <div className="absolute inset-0 bg-gradient-to-b from-orange-500/10 to-transparent opacity-50" />
+                        <div className="relative overflow-hidden rounded-xl backdrop-blur-2xl bg-gradient-to-b from-black/80 to-black/60 shadow-lg shadow-red-500/10">
+                            <div className="absolute inset-0 bg-gradient-to-b from-red-500/10 to-transparent opacity-50" />
                             <div className="relative p-6 flex flex-col gap-6">
                                 {navigationLinks.map((link) => (
                                     <NavLink
