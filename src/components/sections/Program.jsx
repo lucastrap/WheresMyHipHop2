@@ -75,7 +75,7 @@ const Program = () => {
                     isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                 }`}>
                     <h2 className="text-4xl md:text-5xl font-bold text-hiphop-orange mb-6 relative">
-                        Programme
+                        Programmation
                         <div className="absolute -top-4 -right-4 w-12 h-12 border-t-2 border-r-2 border-hiphop-orange/30"/>
                         <div className="absolute -bottom-4 -left-4 w-12 h-12 border-b-2 border-l-2 border-hiphop-orange/30"/>
                     </h2>

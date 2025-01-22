@@ -96,10 +96,10 @@ const Header = () => {
     const [lastScrollY, setLastScrollY] = useState(0);
 
     const navigationLinks = [
-        { to: '/#intro', label: 'Événements' },
-        { to: '/#program', label: 'Programme' },
-        { to: '/#about', label: "À propos" },
-        { to: '/#histoire', label: 'Notre Histoire' },
+        { to: '/#intro', label: 'L\'Événements' },
+        { to: '/#program', label: 'Programmation' },
+        { to: '/#history', label: 'Notre Histoire' },
+        { to: '/#contact', label: 'Contact' },
         { to: '/gallery', label: 'Galerie' },
     ];
 
