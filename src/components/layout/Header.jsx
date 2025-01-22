@@ -127,35 +127,42 @@ const Header = () => {
             py-2
             ${lastScrollY > 50 ? 'backdrop-blur-sm bg-black/10' : ''}
         `}>
-            <nav className="container mx-auto relative">
+            <nav className="">
                 {/* Desktop Layout */}
                 <div className="hidden lg:block relative">
+                    {/* Logo Section */}
                     <div className="absolute left-6 top-1/2 transform -translate-y-1/2">
                         <Link to="/" className="group relative px-4 py-2">
-                            <img
-                                src={MENU_LOGO}
-                                alt="WIM2H"
-                                className="relative h-10 w-auto transition-transform duration-300 group-hover:scale-110"
-                            />
+                        <img
+                            src={MENU_LOGO}
+                            alt="WIM2H"
+                            className="relative h-8 w-auto transition-transform duration-300 group-hover:scale-110"
+                        />
                         </Link>
                     </div>
 
-                    {/* Navigation Links in Modern Button Style */}
-                    <div className="flex items-center justify-between px-6">
-                        <div className="flex items-center gap-4 ml-64">
+                    {/* Main Content with Navigation and "Je participe" */}
+                    <div className="flex items-center justify-between w-full px-6">
+                        {/* Centered Navigation */}
+                        <div className="flex-1 flex justify-center">
+                        <div className="flex items-center gap-4">
                             {navigationLinks.map((link) => (
-                                <NavLink key={link.to} to={link.to}>
-                                    {link.label}
-                                </NavLink>
+                            <NavLink key={link.to} to={link.to}>
+                                {link.label}
+                            </NavLink>
                             ))}
                         </div>
-                        <div className="ml-4">
-                            <NavLink to="/#packs" isCTA={true}>
-                                Je participe !
-                            </NavLink>
+                        </div>
+
+                        {/* "Je participe" Section */}
+                        <div className="absolute right-6 top-1/2 transform -translate-y-1/2">
+                        <NavLink to="/#packs" isCTA={true} className="px-4 py-2">
+                            Je participe !
+                        </NavLink>
                         </div>
                     </div>
-                </div>
+                    </div>
+
 
                 {/* Mobile Layout */}
                 <div className="lg:hidden flex items-center justify-between px-6">
@@ -163,8 +170,8 @@ const Header = () => {
                         <img
                             src={MENU_LOGO}
                             alt="WIM2H"
-                            className="relative h-8 w-auto"
-                        />
+                            className="relative h-auto min-h-10 max-h-10  w-auto "
+                            />
                     </Link>
 
                     <div className="flex items-center gap-2">
