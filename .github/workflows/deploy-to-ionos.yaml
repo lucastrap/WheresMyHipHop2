@@ -16,14 +16,30 @@ on:
         require: true
         type: string
   push:
-    path:
-      - ./.github/workflows/deploy-to-ionos.yaml
-
-concurrency: ${{ github.ref }}
+    branches:
+      - main
+      - master
+    paths-ignore:
+      - '.github/workflows/**'
 
 jobs:
+  check-commit:
+    runs-on: ubuntu-latest
+    outputs:
+      should-deploy: ${{ steps.check.outputs.should-deploy }}
+    steps:
+      - name: Check commit message
+        id: check
+        run: |
+          if [[ "${{ github.event.head_commit.message }}" == *"TO DEPLOY"* ]]; then
+            echo "should-deploy=true" >> $GITHUB_OUTPUT
+          else
+            echo "should-deploy=false" >> $GITHUB_OUTPUT
+          fi
+
   build-and-deploy:
-    if: ${{ github.event_name == 'workflow_dispatch' }}
+    needs: check-commit
+    if: ${{ github.event_name == 'workflow_dispatch' || needs.check-commit.outputs.should-deploy == 'true' }}
     runs-on: ubuntu-latest
     permissions:
       actions: read
