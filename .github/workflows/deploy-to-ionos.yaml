@@ -1,4 +1,4 @@
-name: "Deploy Now: Deploy React to IONOS"
+name: "Deploy React App to IONOS"
 
 on:
   workflow_dispatch:
@@ -16,36 +16,25 @@ on:
         require: true
         type: string
   push:
-    branches:
-      - main
-      - master
-    paths-ignore:
-      - '.github/workflows/**'
+    branches: [ main ]  # ou votre branche principale
+    paths:
+      - ./.github/workflows/deploy-to-ionos.yaml
+      - 'src/**'
+      - 'public/**'
+      - 'package.json'
+
+concurrency: ${{ github.ref }}
 
 jobs:
-  check-commit:
-    runs-on: ubuntu-latest
-    outputs:
-      should-deploy: ${{ steps.check.outputs.should-deploy }}
-    steps:
-      - name: Check commit message
-        id: check
-        run: |
-          if [[ "${{ github.event.head_commit.message }}" == *"TO DEPLOY"* ]]; then
-            echo "should-deploy=true" >> $GITHUB_OUTPUT
-          else
-            echo "should-deploy=false" >> $GITHUB_OUTPUT
-          fi
-
   build-and-deploy:
-    needs: check-commit
-    if: ${{ github.event_name == 'workflow_dispatch' || needs.check-commit.outputs.should-deploy == 'true' }}
+    if: ${{ github.event_name == 'workflow_dispatch' || github.event_name == 'push' }}
     runs-on: ubuntu-latest
     permissions:
       actions: read
     strategy:
       matrix:
-        deployment-id: ${{ fromJson(inputs.deployment-ids) }}
+        deployment-id: ${{ fromJson(inputs.deployment-ids || '["default"]') }}
+    
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -53,15 +42,16 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '18'
+          node-version: '18'  # ou votre version de Node.js
+          cache: 'npm'
 
       - name: Install dependencies
         run: npm ci
 
-      - name: Build React app
+      - name: Build Vite app
         run: npm run build
         env:
-          CI: false
+          NODE_ENV: production
 
       - name: Update deployment status
         uses: ionos-deploy-now/project-action@v1
@@ -74,6 +64,51 @@ jobs:
           action: update-status
           status: in_progress
 
+      - name: Retrieve stored deployment
+        uses: ionos-deploy-now/artifact-action@v1
+        with:
+          api-key: ${{ secrets.IONOS_API_KEY }}
+          service-host: api-eu.ionos.space
+          project-id: ${{ inputs.project-id }}
+          branch-id: ${{ inputs.branch-id }}
+          version: ${{ inputs.version }}
+          action: download
+
+      - name: Fetch deployment info
+        uses: ionos-deploy-now/project-action@v1
+        id: deployment
+        with:
+          api-key: ${{ secrets.IONOS_API_KEY }}
+          service-host: api-eu.ionos.space
+          project-id: ${{ inputs.project-id }}
+          branch-id: ${{ inputs.branch-id }}
+          deployment-id: ${{ matrix.deployment-id }}
+          action: retrieve-info
+
+      - name: Prepare build for deployment
+        run: |
+          mkdir -p deployment
+          cp -r dist/* deployment/
+
+      - name: Render templates
+        uses: ionos-deploy-now/template-renderer-action@v2
+        id: template
+        with:
+          deployment-id: ${{ matrix.deployment-id }}
+          data: "[${{ steps.deployment.outputs.template-variables }}, ${{ toJson(secrets) }}]"
+          input-directory: deployment
+          output-directory: deployment
+          intermediate-data-file: deployment/.template-renderer-data
+
+      - name: Render real site-url to all files
+        run: |
+          for file in `grep -rl 'https://IONOS_DEPLOY_NOW_SITE_URL' deployment`; do
+            sed -i $file -e 's|https://IONOS_DEPLOY_NOW_SITE_URL|${{ fromJson(steps.deployment.outputs.info).site-url }}|g'
+          done
+
+      - name: Render SSH user secret name
+        run: echo SSH_USERNAME_SECRET=IONOS_DEPLOYMENT_`echo ${{ matrix.deployment-id }} | tr '[:lower:]' '[:upper:]' | tr '-' '_'`_SSH_USERNAME >> $GITHUB_ENV
+
       - name: Deploy to IONOS
         uses: ionos-deploy-now/deploy-to-ionos-action@v2
         with:
@@ -85,7 +120,7 @@ jobs:
           deployment-info: ${{ steps.deployment.outputs.info }}
           ssh-user: ${{ secrets[env.SSH_USERNAME_SECRET] }}
           ssh-key: ${{ secrets.IONOS_SSH_KEY }}
-          dist-folder: build
+          folder: deployment
 
       - name: Update deployment status
         if: ${{ always() }}
