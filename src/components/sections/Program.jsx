@@ -11,21 +11,22 @@ const Program = () => {
 
     const schedule = {
         day1: [
-            { time: "10:00", activity: "Ouverture des portes", location: "Entrée principale" },
-            { time: "10:30 - 12:30", activity: "Stage Danse Hip-Hop", location: "Studio 1" },
-            { time: "10:30 - 12:30", activity: "Atelier DJ", location: "Studio Son" },
-            { time: "14:00 - 16:00", activity: "Stage Rap", location: "Studio 2" },
-            { time: "14:00 - 16:00", activity: "Session Graffiti", location: "Zone Street Art" },
-            { time: "16:30 - 18:30", activity: "Stage Beatbox", location: "Studio 3" },
-            { time: "20:00", activity: "Open Mic", location: "Scène principale" },
+            { time: "13:00 - 14:30", activity: "STAGE - Beatbox avec Kenôzen", location: "Ynov" },
+            { time: "13:00 - 14:30", activity: "STAGE - Graffiti avec Claks", location: "Ynov" },
+            { time: "14:00 - 15:00", activity: "STAGE - Breaking avec Keyz", location: "Ynov" },
+            { time: "14:30 - 16:30", activity: "STAGE - DJing avec Davyd Vener", location: "Ynov" },
+            { time: "15:00 - 16:00", activity: "STAGE - HipHop avec Tito", location: "Ynov" },
+            { time: "15:00 - 20:00", activity: "STAND - Textile, Custom, Radio, Créatif", location: "Ynov" },
+            { time: "16:00 - 17:30", activity: "STAGE - Rap avec Sense ou Lu'K", location: "Ynov" },
+            { time: "19:00 - 22:00", activity: "OPEN MIC - animé par Lu'K", location: "Ynov" },
         ],
         day2: [
-            { time: "10:00", activity: "Ouverture des portes", location: "Entrée principale" },
-            { time: "11:00", activity: "Conférence : Professionnalisation dans le Hip-Hop", location: "Auditorium" },
-            { time: "14:00", activity: "Battle Bonnie & Clyde 2vs2", location: "Scène principale" },
-            { time: "16:00", activity: "Battle Breakdance 3vs3", location: "Scène principale" },
-            { time: "18:00", activity: "Cypher final", location: "Scène principale" },
-            { time: "19:00", activity: "Remise des prix", location: "Scène principale" },
+            { time: "10:00 - 11:00", activity: "STAGE - Waacking avec Mina", location: "Ynov" },
+            { time: "11:00 - 12:30", activity: "CONFÉRENCE - La mixité au sein du HipHop par Manon Brunel", location: "Ynov" },
+            { time: "13:00 - 15:00", activity: "BATTLE - Bonnie and Clyde HipHop", location: "Ynov" },
+            { time: "15:00 - 17:00", activity: "BATTLE - Where's My Crew Breaking", location: "Ynov" },
+            { time: "17:00 - 18:00", activity: "BATTLE - Cypher King et Queen", location: "Ynov" },
+            { time: "18:00 - 20:00", activity: "BATTLE - Jam", location: "Ynov" },
         ]
     };
 
