@@ -4,7 +4,7 @@ import Program from "../components/sections/Program.jsx";
 import {useLocation} from "react-router-dom";
 import {useEffect} from "react";
 import Intro from "../components/sections/Intro.jsx";
-import AboutSection from "../components/sections/about.jsx";
+import AboutSection from "../components/sections/About.jsx";
 import Contact from "../components/sections/Contact.jsx";
 import History from "../components/sections/History.jsx";
 import Insta from "../components/sections/Insta.jsx";
