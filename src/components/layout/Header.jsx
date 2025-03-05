@@ -103,6 +103,7 @@ const Header = () => {
         { to: '/gallery', label: 'Galerie' },
     ];
 
+    const participationLink = 'https://www.helloasso.com/associations/sound-workerz/evenements/stages-wim2h';
     useEffect(() => {
         const handleScroll = () => {
             const currentScrollY = window.scrollY;
@@ -156,12 +157,19 @@ const Header = () => {
 
                         {/* "Je participe" Section */}
                         <div className="absolute right-6 top-1/2 transform -translate-y-1/2">
-                        <NavLink to="/#packs" isCTA={true} className="px-4 py-2">
-                            Je participe !
-                        </NavLink>
+                            <NavLink isCTA={true} className="px-4 py-2">
+                                <a 
+                                    href={participationLink} 
+                                    target="_blank" 
+                                    rel="noopener noreferrer"
+                                    className="block text-sm lg:text-lg font-extrabold bg-gradient-to-r from-white to-white bg-clip-text text-transparent transition-colors duration-300 transform-gpu hover:text-white"
+                                    >
+                                    Je participe !
+                                </a>
+                            </NavLink>
                         </div>
                     </div>
-                    </div>
+                </div>
 
 
                 {/* Mobile Layout */}
@@ -175,8 +183,17 @@ const Header = () => {
                     </Link>
 
                     <div className="flex items-center gap-2">
-                        <NavLink to="/participer" isCTA={true}>
-                            <span className="text-xs whitespace-nowrap">Je participe !</span>
+                        <NavLink isCTA={true}>
+                            <span className="text-xs whitespace-nowrap">
+                                <a 
+                                    href={participationLink} 
+                                    target="_blank" 
+                                    rel="noopener noreferrer"
+                                    className="block text-sm lg:text-lg font-extrabold bg-gradient-to-r from-white to-white bg-clip-text text-transparent transition-colors duration-300 transform-gpu hover:text-white"
+                                >
+                                Je participe !
+                                </a>
+                            </span>
                         </NavLink>
 
                         <button
