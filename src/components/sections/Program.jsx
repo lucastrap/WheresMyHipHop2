@@ -13,11 +13,11 @@ const Program = () => {
         day1: [
             { time: "13:00 - 14:30", activity: "STAGE - Beatbox avec Kenôzen", location: "Ynov" },
             { time: "13:00 - 14:30", activity: "STAGE - Graffiti avec Claks", location: "Ynov" },
-            { time: "14:00 - 15:00", activity: "STAGE - Breaking avec Keyz", location: "Ynov" },
             { time: "14:30 - 16:30", activity: "STAGE - DJing avec Davyd Vener", location: "Ynov" },
             { time: "15:00 - 16:00", activity: "STAGE - HipHop avec Tito", location: "Ynov" },
             { time: "15:00 - 20:00", activity: "STAND - Textile, Custom, Radio, Créatif", location: "Ynov" },
             { time: "16:00 - 17:30", activity: "STAGE - Rap avec Sense ou Lu'K", location: "Ynov" },
+            { time: "16:00 - 17:00", activity: "STAGE - Breaking avec Keyz", location: "Ynov" },
             { time: "19:00 - 22:00", activity: "OPEN MIC - animé par Lu'K", location: "Ynov" },
         ],
         day2: [
@@ -26,7 +26,7 @@ const Program = () => {
             { time: "13:00 - 15:00", activity: "BATTLE - Bonnie and Clyde HipHop", location: "Ynov" },
             { time: "15:00 - 17:00", activity: "BATTLE - Where's My Crew Breaking", location: "Ynov" },
             { time: "17:00 - 18:00", activity: "BATTLE - Cypher King et Queen", location: "Ynov" },
-            { time: "18:00 - 20:00", activity: "BATTLE - Jam", location: "Ynov" },
+            { time: "18:00 - 20:00", activity: "JAM", location: "Ynov" },
         ]
     };
 
