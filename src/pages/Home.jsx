@@ -37,7 +37,7 @@ const Home = () => {
             <History/>
             <AboutSection/>
             <Insta/>
-            <ScrollingBanner />
+            <ScrollingBanner/>
             <Contact/>
         </main>
     );

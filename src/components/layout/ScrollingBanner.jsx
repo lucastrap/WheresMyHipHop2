@@ -2,6 +2,9 @@ import React, { useEffect } from 'react';
 import './ScrollingBanner.css';
 import { gsap, Power0 } from 'gsap';
 
+import LOGO from '../../assets/images/menu-logo.png';
+
+
 const ScrollingBanner = () => {
   useEffect(() => {
     const textScrollingContainers = document.querySelectorAll('.text_scrolling_container');
@@ -13,7 +16,7 @@ const ScrollingBanner = () => {
         part.classList.add('text_scrolling_part');
 
         const logoImage = document.createElement('img');
-        logoImage.src = 'src/assets/images/menu-logo.png';
+        logoImage.src = LOGO;
         logoImage.classList.add('menu_logo');
         part.appendChild(logoImage);
 
