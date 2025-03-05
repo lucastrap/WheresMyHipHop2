@@ -86,36 +86,21 @@ const Events = () => {
             title: "PACK SOLO",
             subtitle: "1 STAGE AU CHOIX",
             features: [
-                "Accès à un atelier",
-                "Style au choix",
-                "Pass une journée"
+                "Reste de l'événement gratuit",
             ]
         },
         {
             title: "2PACK",
             subtitle: "2 STAGES AU CHOIX",
             features: [
-                "Accès à deux ateliers",
-                "Choix parmi tous les styles",
-                "Pass pour les deux jours"
+                "Reste de l'événement gratuit",
             ]
         },
         {
             title: "3STYLE PACK",
             subtitle: "3 STAGES AU CHOIX",
             features: [
-                "Accès à trois ateliers",
-                "Mix de styles possible",
-                "Pass pour les deux jours"
-            ]
-        },
-        {
-            title: "ALL EYES ON ME PACK",
-            subtitle: "TOUS LES STAGES",
-            features: [
-                "Accès illimité aux ateliers",
-                "Tous les styles inclus",
-                "Pass VIP deux jours"
+                "Reste de l'événement gratuit",
             ]
         }
     ];

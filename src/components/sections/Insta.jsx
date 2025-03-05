@@ -117,7 +117,7 @@ const InstagramSection = () => {
           <div className="absolute inset-0 bg-white/10 animate-ping opacity-0 group-hover:opacity-100 rounded-xl transition-opacity duration-300"/>
           
           <span className="relative z-10 tracking-wider drop-shadow-md">
-            Booster la culture hip hop 🎤
+            Soutenir la culture hip hop 🎤
           </span>
          
         </div> 

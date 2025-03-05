@@ -69,7 +69,8 @@ const Intro = () => {
                                 "18 intervenants professionnels",
                                 "Des stages et battles de danse",
                                 "Ateliers rap, graffiti, et beatbox",
-                                "Conférences sur la professionnalisation"
+                                "Conférences sur la professionnalisation",
+                                "Open Mic"
                             ].map((text, index) => (
                                 <div
                                     key={index}
