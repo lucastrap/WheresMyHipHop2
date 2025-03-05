@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 
-//import IMG1 from '../../../public/gallery/2024 jour 1/out-WIMHH-02.jpg';
-//import IMG2 from '../../../public/gallery/2024 jour 1/out-WIMHH-47.jpg';
-//import IMG3 from '../../../public/gallery/2024 jour 1/out-WIMHH-52.jpg';
-//import IMG4 from '../../../public/gallery/2024 jour 1/out-WIMHH-15.jpg';
+import IMG1 from '../../../public/gallery/2024 jour 1/out-WIMHH-02.jpg';
+import IMG2 from '../../../public/gallery/2024 jour 1/out-WIMHH-47.jpg';
+import IMG3 from '../../../public/gallery/2024 jour 1/out-WIMHH-52.jpg';
+import IMG4 from '../../../public/gallery/2024 jour 1/out-WIMHH-15.jpg';
 
 const AboutSection = () => {
     const [isVisible, setIsVisible] = useState(false);
