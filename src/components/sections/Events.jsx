@@ -181,7 +181,7 @@ const Events = () => {
                     {events.map((event, index) => (
                         <div
                             key={index}
-                            className="relative group overflow-hidden rounded-lg aspect-[4/3] cursor-pointer"
+                            className="relative group overflow-hidden rounded-lg aspect-[4/3]"
                         >
                             {/* Image avec zoom au hover */}
                             <img
@@ -276,7 +276,7 @@ const Events = () => {
                 {/* Call to action centralisé */}
                 <div className="text-center">
                     <a
-                        href="https://www.helloasso.com/votre-lien"
+                        href="https://www.helloasso.com/associations/sound-workerz/evenements/stages-wim2h"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="relative inline-block group overflow-hidden transform transition-all duration-300 overflow-hidden hover:-translate-y-1"
