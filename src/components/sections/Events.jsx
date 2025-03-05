@@ -6,6 +6,7 @@ import WIMHH_HH from '../../assets/images/WIMHH-HH.jpg';
 import WIMHH_RAP from '../../assets/images/WIMHH-RAP.png';
 import WIMHH_GRAPH from '../../assets/images/WIMHH-GRAPH.jpg';
 import WIMHH_GALLERY from '../../assets/images/WIMHH-GALLERY.jpg';
+import {NavLink} from "react-router-dom";
 
 const Events = () => {
     const [isVisible, setIsVisible] = useState(false);
@@ -178,9 +179,8 @@ const Events = () => {
                             {/* Overlay spécial pour la galerie */}
                             {event.title === "Voir les photos" ? (
                                 <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/60 transition-opacity duration-300">
-                                    <a
-                                        href="/gallery"
-                                        className="relative overflow-hidden group/button inline-flex items-center px-8 py-3 rounded-lg bg-hiphop-orange hover:bg-opacity-90 transition-all duration-300"
+                                    <NavLink to="/gallery"
+                                             className="relative overflow-hidden group/button inline-flex items-center px-8 py-3 rounded-lg bg-hiphop-orange hover:bg-opacity-90 transition-all duration-300"
                                     >
                                         {/* Effet de brillance */}
                                         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-200%] group-hover/button:translate-x-[200%] transition-all duration-1000"></div>
@@ -188,8 +188,8 @@ const Events = () => {
                                         {/* Texte du bouton */}
                                         <span className="relative text-white font-medium text-lg">
                                         Galerie photo
-                                    </span>
-                                    </a>
+                                        </span>
+                                    </NavLink>
                                 </div>
                             ) : (
                                 <>

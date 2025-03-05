@@ -1,4 +1,5 @@
 import SW_LOGO from '../../assets/images/logo_ws.png';
+import {NavLink} from "react-router-dom";
 
 
 const Footer = () => {
@@ -31,12 +32,11 @@ const Footer = () => {
 
                     {/* Mentions légales et copyright */}
                     <div className="flex flex-col items-center md:items-end gap-2 text-sm">
-                        <a
-                            href="/legal-notice"
-                            className="hover:text-black transition-colors"
+                        <NavLink to="/legal-notice"
+                                 className="hover:text-black transition-colors"
                         >
                             Mentions Légales
-                        </a>
+                        </NavLink>
                         <p>© {currentYear} Where is my HipHop</p>
                     </div>
                 </div>
