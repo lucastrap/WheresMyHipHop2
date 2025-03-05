@@ -33,36 +33,36 @@ const Program = () => {
     const workshops = [
         {
             name: "DANSE",
-            details: "Break, Popping, House Dance",
-            capacity: "15 personnes max",
+            details: "Breaking, HipHop, Waacking ",
+            capacity: "25 personnes max",
             level: "Tous niveaux",
             icon: "💃"
         },
         {
-            name: "DJ",
+            name: "DJING",
             details: "Mix, Scratch, Production",
-            capacity: "8 personnes max",
-            level: "Débutant accepté",
+            capacity: "20 personnes max",
+            level: "Tous niveaux",
             icon: "🎧"
         },
         {
             name: "RAP",
             details: "Écriture, Flow, Recording",
-            capacity: "12 personnes max",
+            capacity: "20 personnes max",
             level: "Tous niveaux",
             icon: "🎤"
         },
         {
             name: "GRAFFITI",
             details: "Lettrage, Color, Design",
-            capacity: "10 personnes max",
-            level: "Débutant accepté",
+            capacity: "15 personnes max",
+            level: "Tous niveaux",
             icon: "🎨"
         },
         {
             name: "BEATBOX",
             details: "Techniques vocales, sons, rythmes",
-            capacity: "12 personnes max",
+            capacity: "20 personnes max",
             level: "Tous niveaux",
             icon: "🎵"
         }
