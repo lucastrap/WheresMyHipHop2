@@ -1,0 +1,23 @@
+# Activer le moteur de réécriture
+RewriteEngine On
+RewriteBase /
+
+# Ne pas rediriger les fichiers ou dossiers existants
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Rediriger toutes les requêtes vers index.html
+RewriteRule ^(.*)$ index.html [QSA,L]
+
+# Permettre l'accès depuis n'importe quelle origine
+<IfModule mod_headers.c>
+    Header set Access-Control-Allow-Origin "*"
+    Header set Access-Control-Allow-Methods "GET, POST, OPTIONS"
+    Header set Access-Control-Allow-Headers "Origin, X-Requested-With, Content-Type, Accept"
+</IfModule>
+
+# Définir le type MIME pour JavaScript modules
+<IfModule mod_mime.c>
+    AddType application/javascript .js
+    AddType application/javascript .mjs
+</IfModule>

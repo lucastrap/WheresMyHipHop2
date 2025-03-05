@@ -4,18 +4,16 @@ import react from '@vitejs/plugin-react';
 export default defineConfig({
   plugins: [react()],
   server: {
-    // Set Content Security Policy headers
     csp: true,
-    // Set up CORS headers
-    // cors: true,
-    // Enable HTTPS for development server (optional)
-    // https: true
   },
   build: {
-    // Enable file hashing
+    // Générer des assets avec des chemins relatifs (crucial pour Ionos)
+    assetsDir: 'assets',
+    // Utiliser des chemins relatifs pour les assets
+    base: './',
+    // Configuration standard pour la production
     assetsInlineLimit: 0,
     chunkSizeWarningLimit: 2000,
-    // Enable minification and compression
     minify: true,
     brotliSize: false
   }
