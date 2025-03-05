@@ -102,6 +102,27 @@ const InstagramSection = () => {
                     </div>
                 </div>
             </div>
+            <div className="text-center">
+      <a
+        href="https://www.helloasso.com/associations/sound-workerz/formulaires/1"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="relative inline-block group transform transition-all duration-300 hover:-translate-y-2"
+      >
+        <div className="relative px-10 py-5 bg-gradient-to-r from-orange-500 to-red-600 text-white text-2xl font-bold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
+          {/* Effet de brillance animé */}
+          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-all duration-700 ease-in-out"/>
+          
+          {/* Effet pulse subtil */}
+          <div className="absolute inset-0 bg-white/10 animate-ping opacity-0 group-hover:opacity-100 rounded-xl transition-opacity duration-300"/>
+          
+          <span className="relative z-10 tracking-wider drop-shadow-md">
+            Booster la culture hip hop 🎤
+          </span>
+         
+        </div> 
+      </a>
+    </div>
         </section>
     );
 };
