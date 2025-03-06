@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { Instagram } from 'lucide-react';
+import { INSTAGRAM_CONFIG } from './config';
 
 const InstagramSection = () => {
     const [posts, setPosts] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null);
 
-    const ACCESS_TOKEN = 'IGAAIa1yZCin7NBZAE9fVVBtRG5QR2hFSFpBWGstM1NHUFJHLUdrZAzNlNDBKZAGY4UzJYWDQ4SkdOdlNjY0I2Wll0dDQtNzA4Tm96aXdldGhCOEFvSXRIb0NVaEtMSXJzc0tSSlJCTkxUVTg0bFJwTlJtOFZAORGpfekVHazhlSlcySQZDZD';
-    const INSTAGRAM_USERNAME = 'whereismyhiphop';
+    const ACCESS_TOKEN = INSTAGRAM_CONFIG.ACCESS_TOKEN;
+    const INSTAGRAM_USERNAME = INSTAGRAM_CONFIG.USERNAME;
 
     useEffect(() => {
         const fetchInstagramPosts = async () => {
