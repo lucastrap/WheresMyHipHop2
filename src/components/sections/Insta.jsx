@@ -6,7 +6,7 @@ const InstagramSection = () => {
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null);
 
-    const ACCESS_TOKEN = process.env.INSTA_TOKEN;
+    const ACCESS_TOKEN = import.meta.env.VITE_INSTA_TOKEN;
     const INSTAGRAM_USERNAME = 'whereismyhiphop';
 
     useEffect(() => {
