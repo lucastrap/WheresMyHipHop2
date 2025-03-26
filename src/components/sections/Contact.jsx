@@ -9,6 +9,8 @@ import LOGO_YNOV_CAMPUS from '../../assets/images/logo_ynov_campus_toulouse.png'
 import LOGO_EIGHT_BALL from '../../assets/images/logo_eight_ball.jpg';
 import LOGO_ALPHAB from '../../assets/images/logo_alphab.png';
 import LOGO_EDLS from '../../assets/images/logo_edls.jpg';
+import LOGO_REGION from '../../assets/images/Médaillon lauréat Bpart Occitanie.jpg';
+
 
 // Importer directement le HTML comme une chaîne de caractères
 // Nécessite d'ajouter un plugin Vite ou de copier le HTML dans un fichier JS
@@ -54,6 +56,7 @@ const contactHTML = `
             <img class="contact_logo_partnership" src="${LOGO_EIGHT_BALL}" alt="Logo Eight Ball">
             <img class="contact_logo_partnership" src="${LOGO_ALPHAB}" alt="Logo Alphab">
             <img class="contact_logo_partnership" src="${LOGO_EDLS}" alt="Logo EDLS">
+            <img class="contact_logo_partnership" src="${LOGO_REGION}" alt="Logo EDLS">            
             </div>
         </div>
     </div>
