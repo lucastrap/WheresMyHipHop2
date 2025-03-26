@@ -158,12 +158,12 @@ const Header = () => {
                         {/* "Je participe" Section */}
                         <div className="absolute right-6 top-1/2 transform -translate-y-1/2">
                             <NavLink isCTA={true} className="px-4 py-2">
-                                <a 
-                                    href={participationLink} 
-                                    target="_blank" 
+                                <a
+                                    href={participationLink}
+                                    target="_blank"
                                     rel="noopener noreferrer"
                                     className="block text-sm lg:text-lg font-extrabold bg-gradient-to-r from-white to-white bg-clip-text text-transparent transition-colors duration-300 transform-gpu hover:text-white"
-                                    >
+                                >
                                     Je participe !
                                 </a>
                             </NavLink>
@@ -178,16 +178,16 @@ const Header = () => {
                         <img
                             src={MENU_LOGO}
                             alt="WIM2H"
-                            className="relative h-auto min-h-10 max-h-10  w-auto "
-                            />
+                            className="relative h-10 w-auto object-contain"
+                        />
                     </Link>
 
                     <div className="flex items-center gap-2">
                         <NavLink isCTA={true}>
                             <span className="text-xs whitespace-nowrap">
-                                <a 
+                                <a
                                     href={participationLink} 
-                                    target="_blank" 
+                                    target="_blank"
                                     rel="noopener noreferrer"
                                     className="block text-sm lg:text-lg font-extrabold bg-gradient-to-r from-white to-white bg-clip-text text-transparent transition-colors duration-300 transform-gpu hover:text-white"
                                 >
@@ -216,7 +216,7 @@ const Header = () => {
                     <div className="lg:hidden mt-4 mx-4">
                         <div className="relative overflow-hidden rounded-xl backdrop-blur-2xl bg-gradient-to-b from-black/80 to-black/60 shadow-lg shadow-red-500/10">
                             <div className="absolute inset-0 bg-gradient-to-b from-red-500/10 to-transparent opacity-50" />
-                            <div className="relative p-6 flex flex-col gap-6">
+                            <div className="relative p-6 flex flex-col gap-1">
                                 {navigationLinks.map((link) => (
                                     <NavLink
                                         key={link.to}
