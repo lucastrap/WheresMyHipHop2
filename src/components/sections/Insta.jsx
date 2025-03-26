@@ -6,7 +6,7 @@ const InstagramSection = () => {
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null);
 
-    const ACCESS_TOKEN = 'IGAAIa1yZCin7NBZAE9fVVBtRG5QR2hFSFpBWGstM1NHUFJHLUdrZAzNlNDBKZAGY4UzJYWDQ4SkdOdlNjY0I2Wll0dDQtNzA4Tm96aXdldGhCOEFvSXRIb0NVaEtMSXJzc0tSSlJCTkxUVTg0bFJwTlJtOFZAORGpfekVHazhlSlcySQZDZD';
+    const ACCESS_TOKEN = process.env.INSTA_TOKEN;
     const INSTAGRAM_USERNAME = 'whereismyhiphop';
 
     useEffect(() => {
