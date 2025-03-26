@@ -10,6 +10,7 @@ import LOGO_EIGHT_BALL from '../../assets/images/logo_eight_ball.jpg';
 import LOGO_ALPHAB from '../../assets/images/logo_alphab.png';
 import LOGO_EDLS from '../../assets/images/logo_edls.jpg';
 import LOGO_REGION from '../../assets/images/Médaillon lauréat Bpart Occitanie.jpg';
+import LOGO_BOOSTER from '../../assets/images/Logo_BoosterFM.png';
 
 
 // Importer directement le HTML comme une chaîne de caractères
@@ -53,10 +54,11 @@ const contactHTML = `
             <img class="contact_logo_partnership" src="${LOGO_SOUNDWORKERZ}" alt="Logo SoundWorkerz">
             <img class="contact_logo_partnership" src="${LOGO_HOPUS}" alt="Logo Hopus">
             <img class="contact_logo_partnership" src="${LOGO_YNOV_CAMPUS}" alt="Logo Ynov Campus">
-            <img class="contact_logo_partnership" src="${LOGO_EIGHT_BALL}" alt="Logo Eight Ball">
-            <img class="contact_logo_partnership" src="${LOGO_ALPHAB}" alt="Logo Alphab">
             <img class="contact_logo_partnership" src="${LOGO_EDLS}" alt="Logo EDLS">
             <img class="contact_logo_partnership" src="${LOGO_REGION}" alt="Logo EDLS">            
+            <img class="contact_logo_partnership" src="${LOGO_BOOSTER}" alt="Logo EDLS">       
+            <img class="contact_logo_partnership" src="${LOGO_EIGHT_BALL}" alt="Logo Eight Ball">
+            <img class="contact_logo_partnership" src="${LOGO_ALPHAB}" alt="Logo Alphab">     
             </div>
         </div>
     </div>
