@@ -43,7 +43,7 @@ const Gallery = () => {
                 // Pour chaque répertoire, récupérer la liste des images
                 for (const dir of directories) {
                     const { year, day } = dir;
-                    const dirUrl = `https://whereismyhiphop.fr/WEB_CODE/gallery/${year}_jour_${day}/`;
+                    const dirUrl = `https://gallery.whereismyhiphop.fr/gallery/${year}_jour_${day}/`;
                     
                     // Essayer de charger la page d'index du répertoire
                     const response = await fetch(dirUrl);
