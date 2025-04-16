@@ -19,44 +19,74 @@ const Gallery = () => {
         }
     };
 
+    // Fonction pour extraire le nom de fichier sans extension
+    const getFilenameWithoutExtension = (path) => {
+        const filename = path.split('/').pop();
+        return filename.split('.')[0];
+    };
+
     useEffect(() => {
         const loadImages = async () => {
-            const imageFiles = import.meta.glob('/public/gallery/**/*.{jpg,jpeg,png}');
-            const loadedImages = [];
-            let id = 1;
-
-            for (const path in imageFiles) {
-                const match = path.match(/\/(\d{4})\s*jour\s*(\d+)\//i);
-                if (match) {
-                    const [_, year, day] = match;
-                    const filename = path.split('/').pop().split('.')[0];
-
-                    loadedImages.push({
-                        id: id++,
-                        url: path.replace('/public', ''),
-                        year: year,
-                        day: parseInt(day),
-                        category: `${year} - Jour ${day}`,
-                        description: filename.replace(/-/g, ' ')
-                    });
+            setIsLoading(true);
+            
+            try {
+                // Définir les années et jours disponibles
+                const directories = [
+                    { year: "2024", day: "1" },
+                    { year: "2024", day: "2" }
+                    // Ajoutez d'autres années/jours au besoin
+                ];
+                
+                const loadedImages = [];
+                let id = 1;
+                
+                // Pour chaque répertoire, récupérer la liste des images
+                for (const dir of directories) {
+                    const { year, day } = dir;
+                    const dirUrl = `https://whereismyhiphop.fr/WEB_CODE/gallery/${year}_jour_${day}/`;
+                    
+                    // Essayer de charger la page d'index du répertoire
+                    const response = await fetch(dirUrl);
+                    const html = await response.text();
+                    
+                    // Utiliser une expression régulière pour extraire les noms de fichiers d'images
+                    const regex = /href="([^"]+\.(jpg|jpeg|png))"/gi;
+                    let match;
+                    
+                    while ((match = regex.exec(html)) !== null) {
+                        const imageFilename = match[1];
+                        const imageUrl = `${dirUrl}${imageFilename}`;
+                        
+                        loadedImages.push({
+                            id: id++,
+                            url: imageUrl,
+                            year: year,
+                            day: parseInt(day),
+                            category: `${year} - Jour ${day}`,
+                            description: getFilenameWithoutExtension(imageFilename).replace(/-/g, ' ')
+                        });
+                    }
                 }
+                
+                loadedImages.sort((a, b) => {
+                    if (a.year !== b.year) return b.year - a.year;
+                    return a.day - b.day;
+                });
+                
+                setImages(loadedImages);
+                if (loadedImages.length > 0) {
+                    setSelectedFilter(loadedImages[0].category);
+                }
+            } catch (error) {
+                console.error("Erreur lors du chargement des images:", error);
+            } finally {
+                // Petit délai pour s'assurer que les images commencent à charger
+                setTimeout(() => {
+                    setIsLoading(false);
+                }, 300);
             }
-
-            loadedImages.sort((a, b) => {
-                if (a.year !== b.year) return b.year - a.year;
-                return a.day - b.day;
-            });
-
-            setImages(loadedImages);
-            if (loadedImages.length > 0) {
-                setSelectedFilter(loadedImages[0].category);
-            }
-            // Petit délai pour s'assurer que les images commencent à charger
-            setTimeout(() => {
-                setIsLoading(false);
-            }, 300);
         };
-
+        
         loadImages();
     }, []);
 
