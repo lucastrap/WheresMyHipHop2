@@ -19,60 +19,40 @@ const Gallery = () => {
         }
     };
 
-    // Fonction pour extraire le nom de fichier sans extension
-    const getFilenameWithoutExtension = (path) => {
-        const filename = path.split('/').pop();
-        return filename.split('.')[0];
-    };
-
     useEffect(() => {
         const loadImages = async () => {
             setIsLoading(true);
-            
+
             try {
-                // Définir les années et jours disponibles
-                const directories = [
-                    { year: "2024", day: "1" },
-                    { year: "2024", day: "2" }
-                    // Ajoutez d'autres années/jours au besoin
-                ];
-                
+                // Charger le fichier JSON qui contient la liste des photos
+                const response = await fetch('/public/gallery/gallery-data.json');
+                const data = await response.json();
                 const loadedImages = [];
                 let id = 1;
-                
-                // Pour chaque répertoire, récupérer la liste des images
-                for (const dir of directories) {
-                    const { year, day } = dir;
-                    const dirUrl = `https://gallery.whereismyhiphop.fr/gallery/${year}_jour_${day}/`;
-                    
-                    // Essayer de charger la page d'index du répertoire
-                    const response = await fetch(dirUrl);
-                    const html = await response.text();
-                    
-                    // Utiliser une expression régulière pour extraire les noms de fichiers d'images
-                    const regex = /href="([^"]+\.(jpg|jpeg|png))"/gi;
-                    let match;
-                    
-                    while ((match = regex.exec(html)) !== null) {
-                        const imageFilename = match[1];
-                        const imageUrl = `${dirUrl}${imageFilename}`;
-                        
-                        loadedImages.push({
-                            id: id++,
-                            url: imageUrl,
-                            year: year,
-                            day: parseInt(day),
-                            category: `${year} - Jour ${day}`,
-                            description: getFilenameWithoutExtension(imageFilename).replace(/-/g, ' ')
+
+                for (const folderName in data) {
+                    const match = folderName.match(/(\d{4})_jour_(\d+)/);
+                    if (match) {
+                        const [_, year, day] = match;
+
+                        data[folderName].forEach(image => {
+                            loadedImages.push({
+                                id: id++,
+                                url: image.url,
+                                year: year,
+                                day: parseInt(day),
+                                category: `${year} - Jour ${day}`,
+                                description: image.name.split('.')[0].replace(/-/g, ' ')
+                            });
                         });
                     }
                 }
-                
+
                 loadedImages.sort((a, b) => {
                     if (a.year !== b.year) return b.year - a.year;
                     return a.day - b.day;
                 });
-                
+
                 setImages(loadedImages);
                 if (loadedImages.length > 0) {
                     setSelectedFilter(loadedImages[0].category);
@@ -80,13 +60,12 @@ const Gallery = () => {
             } catch (error) {
                 console.error("Erreur lors du chargement des images:", error);
             } finally {
-                // Petit délai pour s'assurer que les images commencent à charger
                 setTimeout(() => {
                     setIsLoading(false);
                 }, 300);
             }
         };
-        
+
         loadImages();
     }, []);
 
