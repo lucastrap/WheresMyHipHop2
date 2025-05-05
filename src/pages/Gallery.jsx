@@ -25,7 +25,7 @@ const Gallery = () => {
 
             try {
                 // Charger le fichier JSON qui contient la liste des photos
-                const response = await fetch('/public/gallery/gallery-data.json');
+                const response = await fetch('/gallery/gallery-data.json');
                 const data = await response.json();
                 const loadedImages = [];
                 let id = 1;
