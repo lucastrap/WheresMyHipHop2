@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import eventVideo from '../../assets/videos/event-2024.mp4';
+
 import {array} from "ts-interface-checker";
 
 const Intro = () => {
@@ -59,9 +59,9 @@ const Intro = () => {
                         <div className="flex items-center gap-4 mb-6">
                             <div className="relative">
                                 <div className="absolute -top-2 -left-2 w-16 h-16 bg-hiphop-orange/20 rounded-full blur-xl group-hover:bg-hiphop-orange/30 transition-all duration-300"/>
-                                <span className="text-4xl font-bold text-hiphop-orange relative">300+</span>
+                                <span className="text-4xl font-bold text-hiphop-orange relative">500+</span>
                             </div>
-                            <span className="text-lg">participants lors de l'édition 2024</span>
+                            <span className="text-lg">participants lors de l'édition 2025</span>
                         </div>
 
                         <div className="space-y-3">
@@ -122,39 +122,79 @@ const Intro = () => {
                         </div>
                     ))}
                 </div>
-
-                {/* Vidéo de l'édition précédente */}
+                {/* Vidéos des éditions précédentes */}
                 <div className="text-center">
-                    <h3 className="text-2xl font-bold mb-8">Retour sur l'édition 2024</h3>
-                    <div className="relative w-full max-w-4xl mx-auto aspect-video rounded-xl overflow-hidden">
-                        <video
-                            className="w-full h-full object-cover"
-                            ref={(el) => {
-                                if (!el) return;
-                                const observer = new IntersectionObserver(
-                                    ([entry]) => {
-                                        if (entry.isIntersecting) {
-                                            el.play();
-                                        } else {
-                                            el.pause();
-                                        }
-                                    },
-                                    {threshold: 0.5}
-                                );
-                                observer.observe(el);
-                            }}
-                            muted
-                            playsInline
-                            loop
-                            controls
-                        >
-                            <source src={eventVideo} type="video/mp4"/>
-                            Votre navigateur ne supporte pas la lecture de vidéos.
-                        </video>
+                    <h3 className="text-2xl font-bold mb-8">Retour sur les éditions précédentes</h3>
+
+                    {/* Container pour les deux vidéos côte à côte */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+                        {/* Vidéo 2025 */}
+                        <div>
+                            <h4 className="text-xl font-semibold mb-4">Édition 2025</h4>
+                            <div className="relative w-full aspect-video rounded-xl overflow-hidden">
+                                <video
+                                    className="w-full h-full object-cover"
+                                    ref={(el) => {
+                                        if (!el) return;
+                                        const observer = new IntersectionObserver(
+                                            ([entry]) => {
+                                                if (entry.isIntersecting) {
+                                                    el.play();
+                                                } else {
+                                                    el.pause();
+                                                }
+                                            },
+                                            {threshold: 0.5}
+                                        );
+                                        observer.observe(el);
+                                    }}
+                                    muted
+                                    playsInline
+                                    loop
+                                    controls
+                                >
+                                    <source src="https://gallery.whereismyhiphop.fr/gallery/event-2024.mp4" type="video/mp4"/>
+                                    Votre navigateur ne supporte pas la lecture de vidéos.
+                                </video>
+                            </div>
+                        </div>
+
+                        {/* Vidéo 2024 */}
+                        <div>
+                            <h4 className="text-xl font-semibold mb-4">Édition 2024</h4>
+                            <div className="relative w-full aspect-video rounded-xl overflow-hidden">
+                                <video
+                                    className="w-full h-full object-cover"
+                                    ref={(el) => {
+                                        if (!el) return;
+                                        const observer = new IntersectionObserver(
+                                            ([entry]) => {
+                                                if (entry.isIntersecting) {
+                                                    el.play();
+                                                } else {
+                                                    el.pause();
+                                                }
+                                            },
+                                            {threshold: 0.5}
+                                        );
+                                        observer.observe(el);
+                                    }}
+                                    muted
+                                    playsInline
+                                    loop
+                                    controls
+                                >
+                                    <source src="https://gallery.whereismyhiphop.fr/gallery/event-2025.mp4" type="video/mp4"/>
+                                    Votre navigateur ne supporte pas la lecture de vidéos.
+                                </video>
+                            </div>
+                        </div>
                     </div>
+
+                    {/* Texte unique en dessous */}
                     <div className="space-y-2 mt-8">
-                        <h3 className="text-2xl font-bold text-hiphop-orange">Vous étiez nombreux l'année dernière</h3>
-                        <h3 className="text-2xl font-bold">On vous attend encore plus nombreux cette année !</h3>
+                        <h3 className="text-2xl font-bold text-hiphop-orange">Vous étiez nombreux les années précédentes</h3>
+                        <h3 className="text-2xl font-bold">On vous attend encore plus nombreux l'année prochaine!</h3>
                     </div>
                 </div>
             </div>
