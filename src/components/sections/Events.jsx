@@ -115,13 +115,28 @@ const Events = () => {
                 }`}>
                     <div className="text-center mb-8">
                         <h2 className="text-2xl md:text-5xl font-bold mb-2">
-                            PRÊT POUR L'ÉDITION 2025 ?
+                            PRÊT POUR L'ÉDITION 2026 ?
                         </h2>
                         <p className="text-lg md:text-3xl text-gray-200">
-                            RENDEZ-VOUS LES 10 ET 11 MAI
+                            RENDEZ-VOUS L'ANNEE PROCHAINE
                         </p>
                     </div>
 
+                    {timeLeft.days === 0 && timeLeft.hours === 0 && timeLeft.minutes === 0 && timeLeft.seconds === 0 ? (
+                    <div className="flex flex-col justify-center items-center text-center">
+                        <div className="relative group mb-4">
+                            <div className="absolute -inset-2 bg-gradient-to-r from-hiphop-orange via-hiphop-orange/50 to-hiphop-orange opacity-30 blur-xl"/>
+                            <div className="bg-gradient-to-br from-hiphop-orange to-hiphop-orange/80 rounded-lg p-6 md:p-10 relative">
+                                <h2 className="text-4xl md:text-6xl font-bold mb-4 text-white">
+                                    TIME'S UP!
+                                </h2>
+                                <p className="text-lg md:text-xl text-white/90">
+                                    À l'année prochaine pour un nouvel event !
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                ) : (
                     <div className="flex justify-center items-center gap-2 md:gap-8 flex-wrap">
                         {[
                             { value: timeLeft.days, label: "JOURS" },
@@ -146,6 +161,7 @@ const Events = () => {
                             </div>
                         ))}
                     </div>
+                )}
                 </div>
 
                 {/* En-tête de section */}
